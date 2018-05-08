@@ -10,6 +10,7 @@
 		909AE9AC20A21834009D39F3 /* PointOfInterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909AE9A220A21834009D39F3 /* PointOfInterest.framework */; };
 		909AE9B120A21834009D39F3 /* PointOfInterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */; };
 		909AE9B320A21834009D39F3 /* PointOfInterest.h in Headers */ = {isa = PBXBuildFile; fileRef = 909AE9A520A21834009D39F3 /* PointOfInterest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		909AE9BF20A21D13009D39F3 /* PointsOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AE9BE20A21D13009D39F3 /* PointsOfInterest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		909AE9AB20A21834009D39F3 /* PointOfInterestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PointOfInterestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestTests.swift; sourceTree = "<group>"; };
 		909AE9B220A21834009D39F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		909AE9BE20A21D13009D39F3 /* PointsOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				909AE9A520A21834009D39F3 /* PointOfInterest.h */,
 				909AE9A620A21834009D39F3 /* Info.plist */,
+				909AE9BE20A21D13009D39F3 /* PointsOfInterest.swift */,
 			);
 			path = PointOfInterest;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					909AE9A120A21834009D39F3 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					909AE9AA20A21834009D39F3 = {
 						CreatedOnToolsVersion = 9.3;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909AE9BF20A21D13009D39F3 /* PointsOfInterest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +344,7 @@
 		909AE9B720A21834009D39F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -356,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.net.andrematheus.PointOfInterest;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +371,7 @@
 		909AE9B820A21834009D39F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -389,6 +397,7 @@
 		909AE9BA20A21834009D39F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9QQ7VHAARU;
 				INFOPLIST_FILE = PointOfInterestTests/Info.plist;
@@ -407,6 +416,7 @@
 		909AE9BB20A21834009D39F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9QQ7VHAARU;
 				INFOPLIST_FILE = PointOfInterestTests/Info.plist;

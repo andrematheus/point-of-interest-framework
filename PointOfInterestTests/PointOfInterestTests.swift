@@ -10,27 +10,15 @@ import XCTest
 @testable import PointOfInterest
 
 class PointOfInterestTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testShouldReturnPointsOfInterestForBuilding() {
+        let locations = [
+            Location(buildingCode: "b1", buildingLevel: 1, code: "l1", name: "Location 1"),
+            Location(buildingCode: "b2", buildingLevel: 1, code: "l2", name: "Location 2"),
+        ]
+        let b1 = Building(code: "b1", name: "Building 1", numberOfLevels: 7)
+        let pois = PointsOfInterest(pointsOfInterest: locations)
+        let b1pois = pois.forBuildings(buildings: b1)
+        XCTAssert(b1pois.count == 1)
+        XCTAssertEqual(b1pois[0], locations[0])
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
