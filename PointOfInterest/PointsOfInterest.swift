@@ -32,18 +32,22 @@ public struct Location : Equatable {
 
 public class PointsOfInterest: NSObject {
     let pointsOfInterest: [Location]
+    let pointsOfInterestByBuilding: [String: [Location]]
 
     public init(pointsOfInterest: [Location]) {
         self.pointsOfInterest = pointsOfInterest
+        self.pointsOfInterestByBuilding = pointsOfInterest.reduce(into: [:]) { result, location in
+            var l = (result[location.id.buildingCode] ?? [])
+            l.append(location)
+            result[location.id.buildingCode] = l
+        }
     }
 
     private func iterator() -> LazyCollection<[Location]> {
         return self.pointsOfInterest.lazy
     }
 
-    func forBuildings(buildings: Building...) -> LazyFilterCollection<[Location]> {
-        return self.iterator().filter { (poi: Location) in
-            buildings.contains(where: { (b: Building) in b.code == poi.id.buildingCode })
-        }
+    func forBuildings(buildings: Building...) -> [Location] {
+        return buildings.map { pointsOfInterestByBuilding[$0.code] }.flatMap { $0 ?? [] }
     }
 }
