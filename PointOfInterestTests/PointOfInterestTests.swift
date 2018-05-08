@@ -15,23 +15,29 @@ class PointOfInterestTests: XCTestCase {
     let b3 = Building(code: "b3", name: "Building 3", numberOfLevels: 15)
 
     let locations = [
-        Location(buildingCode: "b1", buildingLevel: 2, code: "l1", name: "Location 1"),
-        Location(buildingCode: "b2", buildingLevel: 1, code: "l2", name: "Location 2"),
-        Location(buildingCode: "b3", buildingLevel: 6, code: "l3", name: "Location 3"),
+        Location(buildingCode: "b1", buildingLevel: 2, code: "l1", name: "Location 1", type: .Other),
+        Location(buildingCode: "b2", buildingLevel: 1, code: "l2", name: "Location 2", type: .Other),
+        Location(buildingCode: "b3", buildingLevel: 6, code: "l3", name: "Location 3", type: .Invisible),
     ]
 
     func testShouldReturnPointsOfInterestForBuilding() {
         let pois = PointsOfInterest(pointsOfInterest: locations)
-        let b1pois = pois.forBuildings(buildings: b1)
+        let b1pois = pois.listingForBuildings(buildings: b1)
         XCTAssert(b1pois.count == 1)
         XCTAssertEqual(b1pois[0], locations[0])
     }
 
     func testShouldSortPointsOfInterestByBuilding() {
         let pois = PointsOfInterest(pointsOfInterest: locations)
-        let b1pois = pois.forBuildings(buildings: b2, b1)
+        let b1pois = pois.listingForBuildings(buildings: b2, b1)
         XCTAssert(b1pois.count == 2)
         XCTAssertEqual(b1pois[0], locations[1])
         XCTAssertEqual(b1pois[1], locations[0])
+    }
+
+    func testShouldNotReturnInvisiblePointsOfInterestInListing() {
+        let pois = PointsOfInterest(pointsOfInterest: locations)
+        let b1pois = pois.listingForBuildings(buildings: b3)
+        XCTAssert(b1pois.count == 0)
     }
 }

@@ -14,19 +14,36 @@ struct Building {
     let numberOfLevels: Int
 }
 
-struct LocationId : Equatable {
+struct LocationId: Equatable {
     let buildingCode: String
     let buildingLevel: Int
     let code: String
 }
 
-public struct Location : Equatable {
+enum LocationType {
+    case Invisible
+    case ClassRoom
+    case Service
+    case ThirdPartyService
+    case Other
+
+    func isVisible() -> Bool {
+        switch self {
+        case .Invisible: return false
+        default: return true
+        }
+    }
+}
+
+public struct Location: Equatable {
     let id: LocationId
     let name: String
+    let type: LocationType
 
-    init(buildingCode: String, buildingLevel: Int, code: String, name: String) {
+    init(buildingCode: String, buildingLevel: Int, code: String, name: String, type: LocationType) {
         self.id = LocationId(buildingCode: buildingCode, buildingLevel: buildingLevel, code: code)
         self.name = name
+        self.type = type
     }
 }
 
@@ -47,7 +64,15 @@ public class PointsOfInterest: NSObject {
         return self.pointsOfInterest.lazy
     }
 
-    func forBuildings(buildings: Building...) -> [Location] {
-        return buildings.map { pointsOfInterestByBuilding[$0.code] }.flatMap { $0 ?? [] }
+    func listingForBuildings(buildings: Building...) -> [Location] {
+        let filteredLocations: [[Location]] = buildings.map {
+            pointsOfInterestByBuilding[$0.code] ?? []
+        }
+        let flattenedLocations: [Location] = filteredLocations.flatMap {
+            $0
+        }
+        return flattenedLocations.filter {
+            $0.type.isVisible()
+        }
     }
 }
