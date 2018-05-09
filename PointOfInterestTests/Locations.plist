@@ -2,34 +2,119 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>buildings</key>
+	<array>
+		<dict>
+			<key>code</key>
+			<string>sa</string>
+			<key>name</key>
+			<string>Santiago</string>
+			<key>numberOfLevels</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>code</key>
+			<string>bb</string>
+			<key>name</key>
+			<string>Bloco B</string>
+			<key>numberOfLevels</key>
+			<integer>6</integer>
+		</dict>
+		<dict>
+			<key>code</key>
+			<string>ba</string>
+			<key>name</key>
+			<string>Bloco A</string>
+			<key>numberOfLevels</key>
+			<integer>6</integer>
+		</dict>
+	</array>
 	<key>locations</key>
 	<array>
 		<dict>
-			<key>type</key>
-			<string>ClassRoom</string>
 			<key>id</key>
 			<dict>
-				<key>code</key>
-				<string>l1</string>
-				<key>buildingLevel</key>
-				<integer>1</integer>
 				<key>buildingCode</key>
-				<string>b1</string>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa1</string>
 			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa1</string>
 			<key>name</key>
-			<string>Location 1</string>
+			<string>Biblioteca</string>
+			<key>type</key>
+			<string>Service</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa2</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa2</string>
+			<key>name</key>
+			<string>Secretaria</string>
+			<key>type</key>
+			<string>Service</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa3</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa3</string>
+			<key>name</key>
+			<string>Sala de Estudos</string>
+			<key>type</key>
+			<string>Service</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>bb</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>bb1</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>bb</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>bb1</string>
+			<key>name</key>
+			<string>iCenter</string>
+			<key>type</key>
+			<string>Service</string>
 		</dict>
 	</array>
-    <key>buildings</key>
-    <array>
-        <dict>
-            <key>code</key>
-            <string>b1</string>
-            <key>name</key>
-            <string>Building 1</string>
-            <key>numberOfLevels</key>
-            <integer>7</integer>
-        </dict>
-    </array>
 </dict>
 </plist>
