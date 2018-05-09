@@ -20,7 +20,7 @@ struct LocationId: Equatable {
     let code: String
 }
 
-enum LocationType {
+enum LocationType: String {
     case Invisible
     case ClassRoom
     case Service
@@ -40,6 +40,12 @@ public struct Location: Equatable {
     let name: String
     let type: LocationType
 
+    init(id: LocationId, name: String, type: LocationType) {
+        self.id = id
+        self.name = name
+        self.type = type
+    }
+    
     init(buildingCode: String, buildingLevel: Int, code: String, name: String, type: LocationType) {
         self.id = LocationId(buildingCode: buildingCode, buildingLevel: buildingLevel, code: code)
         self.name = name
@@ -73,6 +79,12 @@ public class PointsOfInterest: NSObject {
         }
         return flattenedLocations.filter {
             $0.type.isVisible()
+        }
+    }
+    
+    public override var description: String {
+        get {
+            return "PointsOfInterests(\(self.pointsOfInterest.count) locations, \(self.pointsOfInterestByBuilding.count) buildings)"
         }
     }
 }

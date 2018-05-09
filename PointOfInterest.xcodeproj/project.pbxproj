@@ -11,6 +11,9 @@
 		909AE9B120A21834009D39F3 /* PointOfInterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */; };
 		909AE9B320A21834009D39F3 /* PointOfInterest.h in Headers */ = {isa = PBXBuildFile; fileRef = 909AE9A520A21834009D39F3 /* PointOfInterest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		909AE9BF20A21D13009D39F3 /* PointsOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AE9BE20A21D13009D39F3 /* PointsOfInterest.swift */; };
+		90D4600420A3358200E682F7 /* PointsOfInterestIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600320A3358200E682F7 /* PointsOfInterestIO.swift */; };
+		90D4600620A33BC100E682F7 /* ConversionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600520A33BC100E682F7 /* ConversionTest.swift */; };
+		90D4600820A33C4D00E682F7 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4600720A33C4D00E682F7 /* Locations.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,9 @@
 		909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestTests.swift; sourceTree = "<group>"; };
 		909AE9B220A21834009D39F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		909AE9BE20A21D13009D39F3 /* PointsOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterest.swift; sourceTree = "<group>"; };
+		90D4600320A3358200E682F7 /* PointsOfInterestIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterestIO.swift; sourceTree = "<group>"; };
+		90D4600520A33BC100E682F7 /* ConversionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionTest.swift; sourceTree = "<group>"; };
+		90D4600720A33C4D00E682F7 /* Locations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 				909AE9A520A21834009D39F3 /* PointOfInterest.h */,
 				909AE9A620A21834009D39F3 /* Info.plist */,
 				909AE9BE20A21D13009D39F3 /* PointsOfInterest.swift */,
+				90D4600320A3358200E682F7 /* PointsOfInterestIO.swift */,
 			);
 			path = PointOfInterest;
 			sourceTree = "<group>";
@@ -85,6 +92,8 @@
 			children = (
 				909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */,
 				909AE9B220A21834009D39F3 /* Info.plist */,
+				90D4600520A33BC100E682F7 /* ConversionTest.swift */,
+				90D4600720A33C4D00E682F7 /* Locations.plist */,
 			);
 			path = PointOfInterestTests;
 			sourceTree = "<group>";
@@ -188,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D4600820A33C4D00E682F7 /* Locations.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				909AE9BF20A21D13009D39F3 /* PointsOfInterest.swift in Sources */,
+				90D4600420A3358200E682F7 /* PointsOfInterestIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				909AE9B120A21834009D39F3 /* PointOfInterestTests.swift in Sources */,
+				90D4600620A33BC100E682F7 /* ConversionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
