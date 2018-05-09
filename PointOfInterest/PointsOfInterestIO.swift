@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol PointsOfInterestConvertible {
+public protocol PointsOfInterestConvertible {
     func toPointsOfInterest() throws -> PointsOfInterest
 }
 
-enum PointsOfInterestConversionError : Error {
+public enum PointsOfInterestConversionError : Error {
     case InvalidInput
     case InvalidLocationType
 }
 
 extension Dictionary : PointsOfInterestConvertible where Key == String, Value : Any {
-    func toPointsOfInterest() throws -> PointsOfInterest {
+    public func toPointsOfInterest() throws -> PointsOfInterest {
         let locationsDict = self["locations"] as? [Dictionary<Key,Value>]
         if let locations = locationsDict?.map({ try! locationFromDict(dict: $0) }) {
             return PointsOfInterest(pointsOfInterest: locations)

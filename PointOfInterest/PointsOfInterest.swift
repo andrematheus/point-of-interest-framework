@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct Building {
+public struct Building {
     let code: String
     let name: String
     let numberOfLevels: Int
 }
 
-struct LocationId: Equatable {
-    let buildingCode: String
-    let buildingLevel: Int
-    let code: String
+public struct LocationId: Equatable {
+    public let buildingCode: String
+    public let buildingLevel: Int
+    public let code: String
 }
 
-enum LocationType: String {
+public enum LocationType: String {
     case Invisible
     case ClassRoom
     case Service
@@ -36,9 +36,9 @@ enum LocationType: String {
 }
 
 public struct Location: Equatable {
-    let id: LocationId
-    let name: String
-    let type: LocationType
+    public let id: LocationId
+    public let name: String
+    public let type: LocationType
 
     init(id: LocationId, name: String, type: LocationType) {
         self.id = id
@@ -65,12 +65,12 @@ public class PointsOfInterest: NSObject {
             result[location.id.buildingCode] = l
         }
     }
-
-    private func iterator() -> LazyCollection<[Location]> {
-        return self.pointsOfInterest.lazy
+    
+    public func listing() -> [Location] {
+        return pointsOfInterest
     }
 
-    func listingForBuildings(buildings: Building...) -> [Location] {
+    public func listingForBuildings(buildings: Building...) -> [Location] {
         let filteredLocations: [[Location]] = buildings.map {
             pointsOfInterestByBuilding[$0.code] ?? []
         }
