@@ -9,9 +9,9 @@
 import Foundation
 
 public struct Building {
-    let code: String
-    let name: String
-    let numberOfLevels: Int
+    public let code: String
+    public let name: String
+    public let numberOfLevels: Int
 }
 
 public struct LocationId: Equatable {
@@ -56,18 +56,28 @@ public struct Location: Equatable {
 public class PointsOfInterest: NSObject {
     let pointsOfInterest: [Location]
     let pointsOfInterestByBuilding: [String: [Location]]
+    let buildings: [Building]
+    let buildingsByCode: [String: Building]
 
-    public init(pointsOfInterest: [Location]) {
+    public init(pointsOfInterest: [Location], buildings: [Building]) {
         self.pointsOfInterest = pointsOfInterest
         self.pointsOfInterestByBuilding = pointsOfInterest.reduce(into: [:]) { result, location in
             var l = (result[location.id.buildingCode] ?? [])
             l.append(location)
             result[location.id.buildingCode] = l
         }
+        self.buildings = buildings
+        self.buildingsByCode = buildings.reduce(into: [:]) { result, building in
+            result[building.code] = building
+        }
     }
     
     public func listing() -> [Location] {
         return pointsOfInterest
+    }
+    
+    public func allBuildings() -> [Building] {
+        return buildings
     }
 
     public func listingForBuildings(buildings: Building...) -> [Location] {

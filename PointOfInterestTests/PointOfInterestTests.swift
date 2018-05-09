@@ -19,16 +19,23 @@ class PointOfInterestTests: XCTestCase {
         Location(buildingCode: "b2", buildingLevel: 1, code: "l2", name: "Location 2", type: .Other),
         Location(buildingCode: "b3", buildingLevel: 6, code: "l3", name: "Location 3", type: .Invisible),
     ]
-
+    
+    var buildings: [Building]
+    var pois: PointsOfInterest
+    
+    override init() {
+        self.buildings = [b1, b2, b3]
+        self.pois = PointsOfInterest(pointsOfInterest: locations, buildings: buildings)
+        super.init()
+    }
+    
     func testShouldReturnPointsOfInterestForBuilding() {
-        let pois = PointsOfInterest(pointsOfInterest: locations)
         let b1pois = pois.listingForBuildings(buildings: b1)
         XCTAssert(b1pois.count == 1)
         XCTAssertEqual(b1pois[0], locations[0])
     }
 
     func testShouldSortPointsOfInterestByBuilding() {
-        let pois = PointsOfInterest(pointsOfInterest: locations)
         let b1pois = pois.listingForBuildings(buildings: b2, b1)
         XCTAssert(b1pois.count == 2)
         XCTAssertEqual(b1pois[0], locations[1])
@@ -36,7 +43,6 @@ class PointOfInterestTests: XCTestCase {
     }
 
     func testShouldNotReturnInvisiblePointsOfInterestInListing() {
-        let pois = PointsOfInterest(pointsOfInterest: locations)
         let b1pois = pois.listingForBuildings(buildings: b3)
         XCTAssert(b1pois.count == 0)
     }

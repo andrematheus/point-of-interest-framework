@@ -20,5 +20,16 @@
 			<string>Location 1</string>
 		</dict>
 	</array>
+    <key>buildings</key>
+    <array>
+        <dict>
+            <key>code</key>
+            <string>b1</string>
+            <key>name</key>
+            <string>Building 1</string>
+            <key>numberOfLevels</key>
+            <integer>7</integer>
+        </dict>
+    </array>
 </dict>
 </plist>

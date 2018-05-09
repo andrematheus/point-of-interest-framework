@@ -14,9 +14,18 @@ class ConversionTests: XCTestCase {
         let path = Bundle(for: type(of: self)).path(forResource: "Locations", ofType: "plist")
         if let dict = NSDictionary(contentsOfFile: path!) as? Dictionary<String, Any> {
             let pointsOfInterest = try! dict.toPointsOfInterest()
-            print(pointsOfInterest)
             let poi = pointsOfInterest.pointsOfInterest[0]
-            print(poi)
+            let building = pointsOfInterest.buildings[0]
+            
+            XCTAssertEqual(poi.id.code, "l1")
+            XCTAssertEqual(poi.id.buildingCode, "b1")
+            XCTAssertEqual(poi.id.buildingLevel, 1)
+            XCTAssertEqual(poi.name, "Location 1")
+            XCTAssertEqual(poi.type, .ClassRoom)
+            
+            XCTAssertEqual(building.code, "b1")
+            XCTAssertEqual(building.name, "Building 1")
+            XCTAssertEqual(building.numberOfLevels, 7)
         }
     }
 }

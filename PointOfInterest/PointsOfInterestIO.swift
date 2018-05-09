@@ -20,8 +20,10 @@ public enum PointsOfInterestConversionError : Error {
 extension Dictionary : PointsOfInterestConvertible where Key == String, Value : Any {
     public func toPointsOfInterest() throws -> PointsOfInterest {
         let locationsDict = self["locations"] as? [Dictionary<Key,Value>]
-        if let locations = locationsDict?.map({ try! locationFromDict(dict: $0) }) {
-            return PointsOfInterest(pointsOfInterest: locations)
+        let buildingsDict = self["buildings"] as? [Dictionary<Key,Value>]
+        if let locations = locationsDict?.map({ try! locationFromDict(dict: $0) }),
+            let buildings = buildingsDict?.map({ try! buildingFromDict(dict: $0) }) {
+            return PointsOfInterest(pointsOfInterest: locations, buildings: buildings)
         } else {
             throw PointsOfInterestConversionError.InvalidInput
         }
@@ -45,6 +47,16 @@ extension Dictionary : PointsOfInterestConvertible where Key == String, Value : 
             let buildingLevel = dict["buildingLevel"] as? Int,
             let code = dict["code"] as? String {
             return LocationId(buildingCode: buildingCode, buildingLevel: buildingLevel, code: code)
+        } else {
+            throw PointsOfInterestConversionError.InvalidInput
+        }
+    }
+    
+    private func buildingFromDict(dict: Dictionary<Key, Value>) throws -> Building {
+        if let code = dict["code"] as? String,
+            let name = dict["name"] as? String,
+            let numberOfLevels = dict["numberOfLevels"] as? Int {
+            return Building(code: code, name: name, numberOfLevels: numberOfLevels)
         } else {
             throw PointsOfInterestConversionError.InvalidInput
         }
