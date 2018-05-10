@@ -18,6 +18,15 @@ public struct LocationId: Equatable {
     public let buildingCode: String
     public let buildingLevel: Int
     public let code: String
+    public var floor: String {
+        get {
+            if buildingLevel == 0 {
+                return "Térreo"
+            } else {
+                return "\(buildingLevel)º andar"
+            }
+        }
+    }
 }
 
 public enum LocationType: String {
