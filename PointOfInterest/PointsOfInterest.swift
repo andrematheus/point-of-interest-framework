@@ -34,6 +34,7 @@ public enum LocationType: String {
     case ClassRoom
     case Service
     case ThirdPartyService
+    case Access
     case Other
 
     func isVisible() -> Bool {
