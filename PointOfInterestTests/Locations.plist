@@ -39,14 +39,14 @@
 				<key>buildingLevel</key>
 				<integer>0</integer>
 				<key>code</key>
-				<string>sa1</string>
+				<string>sa0s1</string>
 			</dict>
 			<key>id.buildingCode</key>
 			<string>sa</string>
 			<key>id.buildingLevel</key>
 			<string>0</string>
 			<key>id.code</key>
-			<string>sa1</string>
+			<string>sa0s1</string>
 			<key>name</key>
 			<string>Biblioteca</string>
 			<key>type</key>
@@ -60,14 +60,14 @@
 				<key>buildingLevel</key>
 				<integer>0</integer>
 				<key>code</key>
-				<string>sa2</string>
+				<string>sa0s2</string>
 			</dict>
 			<key>id.buildingCode</key>
 			<string>sa</string>
 			<key>id.buildingLevel</key>
 			<string>0</string>
 			<key>id.code</key>
-			<string>sa2</string>
+			<string>sa0s2</string>
 			<key>name</key>
 			<string>Secretaria</string>
 			<key>type</key>
@@ -81,18 +81,207 @@
 				<key>buildingLevel</key>
 				<integer>0</integer>
 				<key>code</key>
-				<string>sa3</string>
+				<string>sa0s3</string>
 			</dict>
 			<key>id.buildingCode</key>
 			<string>sa</string>
 			<key>id.buildingLevel</key>
 			<string>0</string>
 			<key>id.code</key>
-			<string>sa3</string>
+			<string>sa0s3</string>
 			<key>name</key>
 			<string>Sala de Estudos</string>
 			<key>type</key>
 			<string>Service</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0a1</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0a1</string>
+			<key>name</key>
+			<string>Entrada</string>
+			<key>type</key>
+			<string>Access</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0a2</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0a2</string>
+			<key>name</key>
+			<string>Escada</string>
+			<key>type</key>
+			<string>Access</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0a3</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0a3</string>
+			<key>name</key>
+			<string>Elevador</string>
+			<key>type</key>
+			<string>Access</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0a4</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0a4</string>
+			<key>name</key>
+			<string>Escada</string>
+			<key>type</key>
+			<string>Access</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0a5</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0a5</string>
+			<key>name</key>
+			<string>Elevador</string>
+			<key>type</key>
+			<string>Access</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0i1</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0i1</string>
+			<key>name</key>
+			<string></string>
+			<key>type</key>
+			<string>Invisible</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0i2</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0i2</string>
+			<key>name</key>
+			<string></string>
+			<key>type</key>
+			<string>Invisible</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0i3</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0i3</string>
+			<key>name</key>
+			<string></string>
+			<key>type</key>
+			<string>Invisible</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<dict>
+				<key>buildingCode</key>
+				<string>sa</string>
+				<key>buildingLevel</key>
+				<integer>0</integer>
+				<key>code</key>
+				<string>sa0i4</string>
+			</dict>
+			<key>id.buildingCode</key>
+			<string>sa</string>
+			<key>id.buildingLevel</key>
+			<string>0</string>
+			<key>id.code</key>
+			<string>sa0i4</string>
+			<key>name</key>
+			<string></string>
+			<key>type</key>
+			<string>Invisible</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -114,6 +303,159 @@
 			<string>iCenter</string>
 			<key>type</key>
 			<string>Service</string>
+		</dict>
+	</array>
+	<key>routes</key>
+	<array>
+		<dict>
+			<key>from</key>
+			<string>sa0a1</string>
+			<key>from.id.code</key>
+			<string>sa0a1</string>
+			<key>to</key>
+			<string>sa0i1</string>
+			<key>to.id.code</key>
+			<string>sa0i1</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i1</string>
+			<key>from.id.code</key>
+			<string>sa0i1</string>
+			<key>to</key>
+			<string>sa0s1</string>
+			<key>to.id.code</key>
+			<string>sa0s1</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i1</string>
+			<key>from.id.code</key>
+			<string>sa0i1</string>
+			<key>to</key>
+			<string>sa0s3</string>
+			<key>to.id.code</key>
+			<string>sa0s3</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i1</string>
+			<key>from.id.code</key>
+			<string>sa0i1</string>
+			<key>to</key>
+			<string>sa0i2</string>
+			<key>to.id.code</key>
+			<string>sa0i2</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i2</string>
+			<key>from.id.code</key>
+			<string>sa0i2</string>
+			<key>to</key>
+			<string>sa0s3</string>
+			<key>to.id.code</key>
+			<string>sa0s3</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i2</string>
+			<key>from.id.code</key>
+			<string>sa0i2</string>
+			<key>to</key>
+			<string>sa0a4</string>
+			<key>to.id.code</key>
+			<string>sa0a4</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i2</string>
+			<key>from.id.code</key>
+			<string>sa0i2</string>
+			<key>to</key>
+			<string>sa0a5</string>
+			<key>to.id.code</key>
+			<string>sa0a5</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i2</string>
+			<key>from.id.code</key>
+			<string>sa0i2</string>
+			<key>to</key>
+			<string>sa0i3</string>
+			<key>to.id.code</key>
+			<string>sa0i3</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i3</string>
+			<key>from.id.code</key>
+			<string>sa0i3</string>
+			<key>to</key>
+			<string>sa0a4</string>
+			<key>to.id.code</key>
+			<string>sa0a4</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i3</string>
+			<key>from.id.code</key>
+			<string>sa0i3</string>
+			<key>to</key>
+			<string>sa0a5</string>
+			<key>to.id.code</key>
+			<string>sa0a5</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i3</string>
+			<key>from.id.code</key>
+			<string>sa0i3</string>
+			<key>to</key>
+			<string>sa0s2</string>
+			<key>to.id.code</key>
+			<string>sa0s2</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i3</string>
+			<key>from.id.code</key>
+			<string>sa0i3</string>
+			<key>to</key>
+			<string>sa0i4</string>
+			<key>to.id.code</key>
+			<string>sa0i4</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i4</string>
+			<key>from.id.code</key>
+			<string>sa0i4</string>
+			<key>to</key>
+			<string>sa0s1</string>
+			<key>to.id.code</key>
+			<string>sa0s1</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i4</string>
+			<key>from.id.code</key>
+			<string>sa0i4</string>
+			<key>to</key>
+			<string>sa0a2</string>
+			<key>to.id.code</key>
+			<string>sa0a2</string>
+		</dict>
+		<dict>
+			<key>from</key>
+			<string>sa0i4</string>
+			<key>from.id.code</key>
+			<string>sa0i4</string>
+			<key>to</key>
+			<string>sa0a3</string>
+			<key>to.id.code</key>
+			<string>sa0a3</string>
 		</dict>
 	</array>
 </dict>

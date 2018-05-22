@@ -14,7 +14,7 @@ public struct Building {
     public let numberOfLevels: Int
 }
 
-public struct LocationId: Equatable {
+public struct LocationId: Equatable, Hashable {
     public let buildingCode: String
     public let buildingLevel: Int
     public let code: String
@@ -27,6 +27,10 @@ public struct LocationId: Equatable {
             }
         }
     }
+    
+    public var hashValue: Int {
+        return buildingCode.hashValue ^ buildingLevel.hashValue ^ code.hashValue
+    }
 }
 
 public enum LocationType: String {
@@ -37,7 +41,15 @@ public enum LocationType: String {
     case Access
     case Other
 
-    func isVisible() -> Bool {
+    func showInList() -> Bool {
+        switch self {
+        case .Invisible: return false
+        case .Access: return false
+        default: return true
+        }
+    }
+    
+    func showInMap() -> Bool {
         switch self {
         case .Invisible: return false
         default: return true
@@ -45,7 +57,7 @@ public enum LocationType: String {
     }
 }
 
-public struct Location: Equatable {
+public struct Location: Equatable, Hashable {
     public let id: LocationId
     public let name: String
     public let type: LocationType
@@ -61,25 +73,46 @@ public struct Location: Equatable {
         self.name = name
         self.type = type
     }
+    
+    public var hashValue: Int {
+        return id.hashValue
+    }
 }
 
 public class PointsOfInterest: NSObject {
     let pointsOfInterest: [Location]
     let pointsOfInterestByBuilding: [String: [Location]]
+    let locationsByCode: [String: Location]
+    let routes: Routing<Location>
     let buildings: [Building]
     let buildingsByCode: [String: Building]
 
-    public init(pointsOfInterest: [Location], buildings: [Building]) {
+    public init(pointsOfInterest: [Location], buildings: [Building], routes: [[String:String]]) {
         self.pointsOfInterest = pointsOfInterest
         self.pointsOfInterestByBuilding = pointsOfInterest.reduce(into: [:]) { result, location in
             var l = (result[location.id.buildingCode] ?? [])
             l.append(location)
             result[location.id.buildingCode] = l
         }
+        self.locationsByCode = pointsOfInterest.reduce(into: [:]) { result, location in
+            result[location.id.code] = location
+        }
         self.buildings = buildings
         self.buildingsByCode = buildings.reduce(into: [:]) { result, building in
             result[building.code] = building
         }
+        let builder = Routing<Location>.Builder()
+        for location in pointsOfInterest {
+            builder.node(t: location)
+        }
+        for routeSpec in routes {
+            if let fromId = routeSpec["from"], let toId = routeSpec["to"],
+                let fromLocation = locationsByCode[fromId], let toLocation = locationsByCode[toId] {
+                try? builder.route(from: fromLocation, to: toLocation)
+                try? builder.route(from: toLocation, to: fromLocation)
+            }
+        }
+        self.routes = builder.build()
     }
     
     public func listing() -> [Location] {
@@ -98,7 +131,7 @@ public class PointsOfInterest: NSObject {
             $0
         }
         return flattenedLocations.filter {
-            $0.type.isVisible()
+            $0.type.showInList()
         }
     }
     

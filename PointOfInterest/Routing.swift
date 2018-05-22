@@ -28,12 +28,12 @@ public class Routing<T: Hashable>: NSObject {
     let nodes: Set<T>
     let routes: [T: [T]]
     
-    public init(nodes: Set<T>, routes: [T: [T]]) {
+    init(nodes: Set<T>, routes: [T: [T]]) {
         self.nodes = nodes
         self.routes = routes
     }
     
-    public func route(from: T, to: T) -> Route<T>? {
+    func route(from: T, to: T) -> Route<T>? {
         var nodeStack: [(T, [T])] = []
         nodeStack.append((from, [from]))
         var used: Set<T> = []

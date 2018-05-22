@@ -16,16 +16,25 @@ class ConversionTests: XCTestCase {
             let pointsOfInterest = try! dict.toPointsOfInterest()
             let poi = pointsOfInterest.pointsOfInterest[0]
             let building = pointsOfInterest.buildings[0]
+            let routes = pointsOfInterest.routes
             
-            XCTAssertEqual(poi.id.code, "l1")
-            XCTAssertEqual(poi.id.buildingCode, "b1")
-            XCTAssertEqual(poi.id.buildingLevel, 1)
-            XCTAssertEqual(poi.name, "Location 1")
-            XCTAssertEqual(poi.type, .ClassRoom)
+            XCTAssertEqual(poi.id.code, "sa0s1")
+            XCTAssertEqual(poi.id.buildingCode, "sa")
+            XCTAssertEqual(poi.id.buildingLevel, 0)
+            XCTAssertEqual(poi.name, "Biblioteca")
+            XCTAssertEqual(poi.type, .Service)
             
-            XCTAssertEqual(building.code, "b1")
-            XCTAssertEqual(building.name, "Building 1")
-            XCTAssertEqual(building.numberOfLevels, 7)
+            XCTAssertEqual(building.code, "sa")
+            XCTAssertEqual(building.name, "Santiago")
+            XCTAssertEqual(building.numberOfLevels, 5)
+            
+            XCTAssertNotNil(routes.routes[poi])
+            
+            let route = routes.route(from: pointsOfInterest.pointsOfInterest[0], to: pointsOfInterest.pointsOfInterest[1])
+            XCTAssertNotNil(route)
+            for leg in (route?.legs)! {
+                print("Leg: \(leg)")
+            }
         }
     }
 }

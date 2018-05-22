@@ -20,13 +20,12 @@ class PointOfInterestTests: XCTestCase {
         Location(buildingCode: "b3", buildingLevel: 6, code: "l3", name: "Location 3", type: .Invisible),
     ]
     
-    var buildings: [Building]
-    var pois: PointsOfInterest
+    var buildings: [Building] = []
+    var pois: PointsOfInterest!
     
-    override init() {
+    override func setUp() {
         self.buildings = [b1, b2, b3]
-        self.pois = PointsOfInterest(pointsOfInterest: locations, buildings: buildings)
-        super.init()
+        self.pois = PointsOfInterest(pointsOfInterest: locations, buildings: buildings, routes: [[:]])
     }
     
     func testShouldReturnPointsOfInterestForBuilding() {

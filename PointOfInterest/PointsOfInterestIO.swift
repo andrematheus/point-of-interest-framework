@@ -22,8 +22,9 @@ extension Dictionary : PointsOfInterestConvertible where Key == String, Value : 
         let locationsDict = self["locations"] as? [Dictionary<Key,Value>]
         let buildingsDict = self["buildings"] as? [Dictionary<Key,Value>]
         if let locations = locationsDict?.map({ try! locationFromDict(dict: $0) }),
-            let buildings = buildingsDict?.map({ try! buildingFromDict(dict: $0) }) {
-            return PointsOfInterest(pointsOfInterest: locations, buildings: buildings)
+            let buildings = buildingsDict?.map({ try! buildingFromDict(dict: $0) }),
+            let routes = self["routes"] as? [[String: String]] {
+            return PointsOfInterest(pointsOfInterest: locations, buildings: buildings, routes: routes)
         } else {
             throw PointsOfInterestConversionError.InvalidInput
         }
