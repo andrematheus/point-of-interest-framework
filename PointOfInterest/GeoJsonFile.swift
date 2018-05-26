@@ -1,13 +1,29 @@
 import Foundation
+import CoreLocation
 
 public enum FeatureType: String, Codable {
     case Feature
 }
 
 public enum Coordinates {
-    case Point([Double])
-    case Polygon([[[Double]]])
+    case Point(CLLocationCoordinate2D)
+    case Polygon([[CLLocationCoordinate2D]])
     case Unsupported
+}
+
+extension CLLocationCoordinate2D: Codable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        try container.encode(longitude)
+        try container.encode(latitude)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        self.init()
+        longitude = try container.decode(Double.self)
+        latitude = try container.decode(Double.self)
+    }
 }
 
 public struct FeatureGeometry {
@@ -42,11 +58,11 @@ extension FeatureGeometry: Codable {
         
         let coords: Coordinates
         switch type {
-        case "point":
-            let payload = try container.decode([Double].self, forKey: CodingKeys.coordinates)
+        case "Point":
+            let payload = try container.decode(CLLocationCoordinate2D.self, forKey: CodingKeys.coordinates)
             coords = .Point(payload)
-        case "polygon":
-            let payload = try container.decode([[[Double]]].self, forKey: CodingKeys.coordinates)
+        case "Polygon":
+            let payload = try container.decode([[CLLocationCoordinate2D]].self, forKey: CodingKeys.coordinates)
             coords = .Polygon(payload)
         default:
             coords = .Unsupported

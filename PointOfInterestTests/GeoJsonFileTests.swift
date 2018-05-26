@@ -21,5 +21,7 @@ class GeoJsonFileTests: XCTestCase {
         let decoder = JSONDecoder()
         let geojson = try! decoder.decode(GeoJsonFile.self, from: data!)
         XCTAssertEqual(geojson.features.count, 16)
+        let point = geojson.features[2]
+        print(point)
     }
 }
