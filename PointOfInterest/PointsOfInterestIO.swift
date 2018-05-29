@@ -17,49 +17,16 @@ public enum PointsOfInterestConversionError : Error {
     case InvalidLocationType
 }
 
-extension Dictionary : PointsOfInterestConvertible where Key == String, Value : Any {
+public struct LocationsFile: Codable {
+    let buildings: [Building]
+    let locations: [Location]
+    let routes: [[String:String]]
+}
+
+extension Data : PointsOfInterestConvertible {
     public func toPointsOfInterest() throws -> PointsOfInterest {
-        let locationsDict = self["locations"] as? [Dictionary<Key,Value>]
-        let buildingsDict = self["buildings"] as? [Dictionary<Key,Value>]
-        if let locations = locationsDict?.map({ try! locationFromDict(dict: $0) }),
-            let buildings = buildingsDict?.map({ try! buildingFromDict(dict: $0) }),
-            let routes = self["routes"] as? [[String: String]] {
-            return PointsOfInterest(pointsOfInterest: locations, buildings: buildings, routes: routes)
-        } else {
-            throw PointsOfInterestConversionError.InvalidInput
-        }
-    }
-    
-    private func locationFromDict(dict: Dictionary<Key, Value>) throws -> Location {
-        if let idDict = dict["id"] as? Dictionary<Key, Value>,
-            let name = dict["name"] as? String,
-            let typeName = dict["type"] as? String {
-            
-            let type = LocationType(rawValue: typeName)!
-            let id = try! locationIdFromDict(dict: idDict)
-            return Location(id: id, name: name, type: type)
-        } else {
-            throw PointsOfInterestConversionError.InvalidInput
-        }
-    }
-    
-    private func locationIdFromDict(dict: Dictionary<Key, Value>) throws -> LocationId {
-        if let buildingCode = dict["buildingCode"] as? String,
-            let buildingLevel = dict["buildingLevel"] as? Int,
-            let code = dict["code"] as? String {
-            return LocationId(buildingCode: buildingCode, buildingLevel: buildingLevel, code: code)
-        } else {
-            throw PointsOfInterestConversionError.InvalidInput
-        }
-    }
-    
-    private func buildingFromDict(dict: Dictionary<Key, Value>) throws -> Building {
-        if let code = dict["code"] as? String,
-            let name = dict["name"] as? String,
-            let numberOfLevels = dict["numberOfLevels"] as? Int {
-            return Building(code: code, name: name, numberOfLevels: numberOfLevels)
-        } else {
-            throw PointsOfInterestConversionError.InvalidInput
-        }
+        let decoder = JSONDecoder()
+        let locationsFile = try! decoder.decode(LocationsFile.self, from: self)
+        return PointsOfInterest(pointsOfInterest: locationsFile.locations, buildings: locationsFile.buildings, routes: locationsFile.routes)
     }
 }

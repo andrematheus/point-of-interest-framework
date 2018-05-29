@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8E72C3EFD649ABD76BD8682C /* GeoJsonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72CB4CFFCD18968402026E /* GeoJsonFile.swift */; };
 		8E72C6C401E086EFA5219B95 /* GeoJsonFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72CCF4F2807A500831B355 /* GeoJsonFileTests.swift */; };
-		8E72C9593779D03AE8232058 /* features.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8E72CD13511D5626AB9F1436 /* features.geojson */; };
 		904A35AD20AA18A20080B7D0 /* RoutingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B5EC17B914ACB82EC2543 /* RoutingTest.swift */; };
 		909AE9AC20A21834009D39F3 /* PointOfInterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909AE9A220A21834009D39F3 /* PointOfInterest.framework */; };
 		909AE9B120A21834009D39F3 /* PointOfInterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */; };
@@ -18,6 +17,7 @@
 		90D4600420A3358200E682F7 /* PointsOfInterestIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600320A3358200E682F7 /* PointsOfInterestIO.swift */; };
 		90D4600620A33BC100E682F7 /* ConversionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600520A33BC100E682F7 /* ConversionTest.swift */; };
 		90D4600820A33C4D00E682F7 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4600720A33C4D00E682F7 /* Locations.plist */; };
+		E5FE2B4420BB565A00F3945A /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = E5FE2B4320BB565900F3945A /* Locations.json */; };
 		FB9B5F2674D85A865966A95B /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B56435803299F18705DE9 /* Routing.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,6 @@
 /* Begin PBXFileReference section */
 		8E72CB4CFFCD18968402026E /* GeoJsonFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoJsonFile.swift; sourceTree = "<group>"; };
 		8E72CCF4F2807A500831B355 /* GeoJsonFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoJsonFileTests.swift; sourceTree = "<group>"; };
-		8E72CD13511D5626AB9F1436 /* features.geojson */ = {isa = PBXFileReference; lastKnownFileType = file.geojson; path = features.geojson; sourceTree = "<group>"; };
 		909AE9A220A21834009D39F3 /* PointOfInterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PointOfInterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		909AE9A520A21834009D39F3 /* PointOfInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointOfInterest.h; sourceTree = "<group>"; };
 		909AE9A620A21834009D39F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		90D4600320A3358200E682F7 /* PointsOfInterestIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterestIO.swift; sourceTree = "<group>"; };
 		90D4600520A33BC100E682F7 /* ConversionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionTest.swift; sourceTree = "<group>"; };
 		90D4600720A33C4D00E682F7 /* Locations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
+		E5FE2B4320BB565900F3945A /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		FB9B56435803299F18705DE9 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		FB9B5EC17B914ACB82EC2543 /* RoutingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,12 +102,12 @@
 		909AE9AF20A21834009D39F3 /* PointOfInterestTests */ = {
 			isa = PBXGroup;
 			children = (
+				E5FE2B4320BB565900F3945A /* Locations.json */,
 				909AE9B020A21834009D39F3 /* PointOfInterestTests.swift */,
 				909AE9B220A21834009D39F3 /* Info.plist */,
 				90D4600520A33BC100E682F7 /* ConversionTest.swift */,
 				90D4600720A33C4D00E682F7 /* Locations.plist */,
 				FB9B5EC17B914ACB82EC2543 /* RoutingTest.swift */,
-				8E72CD13511D5626AB9F1436 /* features.geojson */,
 				8E72CCF4F2807A500831B355 /* GeoJsonFileTests.swift */,
 			);
 			path = PointOfInterestTests;
@@ -212,8 +212,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5FE2B4420BB565A00F3945A /* Locations.json in Resources */,
 				90D4600820A33C4D00E682F7 /* Locations.plist in Resources */,
-				8E72C9593779D03AE8232058 /* features.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

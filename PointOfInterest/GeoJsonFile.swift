@@ -1,11 +1,21 @@
 import Foundation
 import CoreLocation
 
-public enum FeatureType: String, Codable {
+public enum FeatureType: String, Codable, Equatable {
     case Feature
 }
 
-public enum Coordinates {
+extension CLLocationCoordinate2D: Equatable {
+    public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return almostEqual(lhs: lhs.latitude, rhs: rhs.latitude) && almostEqual(lhs: lhs.longitude, rhs: rhs.longitude)
+    }
+    
+    static func almostEqual(lhs: CLLocationDegrees, rhs: CLLocationDegrees) -> Bool {
+        return (lhs - rhs) < 1e-16
+    }
+}
+
+public enum Coordinates: Equatable{
     case Point(CLLocationCoordinate2D)
     case Polygon([[CLLocationCoordinate2D]])
     case Unsupported
@@ -26,9 +36,9 @@ extension CLLocationCoordinate2D: Codable {
     }
 }
 
-public struct FeatureGeometry {
-    var coordinates: Coordinates
-    var type: String
+public struct FeatureGeometry: Equatable {
+    public let coordinates: Coordinates
+    public let type: String
 }
 
 extension FeatureGeometry: Codable {
@@ -71,14 +81,14 @@ extension FeatureGeometry: Codable {
     }
 }
 
-public struct Feature: Codable {
-    var type: FeatureType
-    var properties: [String: String]
-    var geometry: FeatureGeometry
-    var id: String
+public struct Feature: Codable, Equatable {
+    public let type: FeatureType
+    public let properties: [String: String]
+    public let geometry: FeatureGeometry
+    public let id: String
 }
 
-public struct GeoJsonFile: Codable {
+public class GeoJsonFile: Codable {
     var features: [Feature]
     var type: String
 }

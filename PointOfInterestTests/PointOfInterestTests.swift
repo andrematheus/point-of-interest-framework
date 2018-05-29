@@ -7,17 +7,21 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import PointOfInterest
 
 class PointOfInterestTests: XCTestCase {
-    let b1 = Building(code: "b1", name: "Building 1", numberOfLevels: 7)
-    let b2 = Building(code: "b2", name: "Building 2", numberOfLevels: 1)
-    let b3 = Building(code: "b3", name: "Building 3", numberOfLevels: 15)
+    static let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: -46.632591, longitude: -23.529894)
+    static let geometry: FeatureGeometry = FeatureGeometry(coordinates:.Point(coordinate), type: "Point")
+    static let feature = Feature(type: .Feature, properties: [:], geometry: geometry, id: "featureId")
+    let b1 = Building(code: "b1", name: "Building 1", numberOfLevels: 7, outline: feature, point: feature)
+    let b2 = Building(code: "b2", name: "Building 2", numberOfLevels: 1, outline: feature, point: feature)
+    let b3 = Building(code: "b3", name: "Building 3", numberOfLevels: 15, outline: feature, point: feature)
 
     let locations = [
-        Location(buildingCode: "b1", buildingLevel: 2, code: "l1", name: "Location 1", type: .Other),
-        Location(buildingCode: "b2", buildingLevel: 1, code: "l2", name: "Location 2", type: .Other),
-        Location(buildingCode: "b3", buildingLevel: 6, code: "l3", name: "Location 3", type: .Invisible),
+        Location(id: LocationId(buildingCode: "b1", buildingLevel: 2, code: "l1"), name: "Location 1", type: .Other, point: feature),
+        Location(id: LocationId(buildingCode: "b2", buildingLevel: 1, code: "l2"), name: "Location 2", type: .Other, point: feature),
+        Location(id: LocationId(buildingCode: "b3", buildingLevel: 6, code: "l3"), name: "Location 3", type: .Invisible, point: feature),
     ]
     
     var buildings: [Building] = []

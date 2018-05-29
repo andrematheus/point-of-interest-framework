@@ -8,13 +8,15 @@
 
 import Foundation
 
-public struct Building {
+public struct Building: Codable {
     public let code: String
     public let name: String
     public let numberOfLevels: Int
+    public let outline: Feature
+    public let point: Feature
 }
 
-public struct LocationId: Equatable, Hashable {
+public struct LocationId: Equatable, Hashable, Codable {
     public let buildingCode: String
     public let buildingLevel: Int
     public let code: String
@@ -33,7 +35,7 @@ public struct LocationId: Equatable, Hashable {
     }
 }
 
-public enum LocationType: String {
+public enum LocationType: String, Codable, Equatable {
     case Invisible
     case ClassRoom
     case Service
@@ -57,23 +59,12 @@ public enum LocationType: String {
     }
 }
 
-public struct Location: Equatable, Hashable {
+public struct Location: Equatable, Hashable, Codable {
     public let id: LocationId
     public let name: String
     public let type: LocationType
+    public var point: Feature
 
-    init(id: LocationId, name: String, type: LocationType) {
-        self.id = id
-        self.name = name
-        self.type = type
-    }
-    
-    init(buildingCode: String, buildingLevel: Int, code: String, name: String, type: LocationType) {
-        self.id = LocationId(buildingCode: buildingCode, buildingLevel: buildingLevel, code: code)
-        self.name = name
-        self.type = type
-    }
-    
     public var hashValue: Int {
         return id.hashValue
     }
