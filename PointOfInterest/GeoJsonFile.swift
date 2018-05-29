@@ -87,8 +87,3 @@ public struct Feature: Codable, Equatable {
     public let geometry: FeatureGeometry
     public let id: String
 }
-
-public class GeoJsonFile: Codable {
-    var features: [Feature]
-    var type: String
-}

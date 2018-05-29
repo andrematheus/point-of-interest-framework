@@ -1,1 +1,677 @@
-{"locations": [{"id.code": "sa0s1", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Biblioteca", "type": "Service", "id": {"code": "sa0s1", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "location", "location_code": "sa0s1"}, "geometry": {"coordinates": [-46.632591, -23.529894], "type": "Point"}, "id": "473f6f70826b7b89700ca6d1aa59a866"}}, {"id.code": "sa0s2", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Secretaria", "type": "Service", "id": {"code": "sa0s2", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0s2"}, "geometry": {"coordinates": [-46.632458, -23.530157], "type": "Point"}, "id": "d25542b64e83fefb89c3509dfaeefa52"}}, {"id.code": "sa0s3", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Sala de Estudos", "type": "Service", "id": {"code": "sa0s3", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "location", "location_code": "sa0s3"}, "geometry": {"coordinates": [-46.632667, -23.53005], "type": "Point"}, "id": "f4fd95116eed4c9f003938400e082f09"}}, {"id.code": "sa0a1", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Entrada", "type": "Access", "null": ["Entrada aberta hoje"], "id": {"code": "sa0a1", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0a1"}, "geometry": {"coordinates": [-46.632681, -23.529958], "type": "Point"}, "id": "a9cedab23917e08c151409c7f3e615b5"}}, {"id.code": "sa0a2", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Escada", "type": "Access", "null": ["Escada pr\u00f3xima Hall"], "id": {"code": "sa0a2", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0a2"}, "geometry": {"coordinates": [-46.632393, -23.529964], "type": "Point"}, "id": "5fd468f8b9089c0f1f3450d0facaf1ef"}}, {"id.code": "sa0a3", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Elevador", "type": "Access", "null": ["Elevador pr\u00f3ximo ao Hall"], "id": {"code": "sa0a3", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0a3"}, "geometry": {"coordinates": [-46.632416, -23.530023], "type": "Point"}, "id": "c497522528e35b45f84a2d48004f2a70"}}, {"id.code": "sa0a4", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Escada", "type": "Access", "null": ["Escada pr\u00f3xima Hall"], "id": {"code": "sa0a4", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0a4"}, "geometry": {"coordinates": [-46.632574, -23.5301], "type": "Point"}, "id": "a36c9f37ba2bff44e8e38f7311f26882"}}, {"id.code": "sa0a5", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "Elevador", "type": "Access", "null": ["Elevador pr\u00f3ximo Hall"], "id": {"code": "sa0a5", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0a5"}, "geometry": {"coordinates": [-46.632534, -23.53011], "type": "Point"}, "id": "d241c9dc868950fe80b244bcdc932a5a"}}, {"id.code": "sa0i1", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "", "type": "Invisible", "null": ["ur"], "id": {"code": "sa0i1", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0i1"}, "geometry": {"coordinates": [-46.632587, -23.529976], "type": "Point"}, "id": "302ffbe9910c7281ed1f5ff3da10d4ab"}}, {"id.code": "sa0i2", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "", "type": "Invisible", "null": ["ul"], "id": {"code": "sa0i2", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0i2"}, "geometry": {"coordinates": [-46.632623, -23.530112], "type": "Point"}, "id": "e9dc1c9964dc87888e6c98fe73f0edb2"}}, {"id.code": "sa0i3", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "", "type": "Invisible", "null": ["ll"], "id": {"code": "sa0i3", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0i3"}, "geometry": {"coordinates": [-46.632485, -23.530144], "type": "Point"}, "id": "b3f3e5fe4b8486592e814aa8de460b47"}}, {"id.code": "sa0i4", "id.buildingLevel": "0", "id.buildingCode": "sa", "name": "", "type": "Invisible", "null": ["lr"], "id": {"code": "sa0i4", "buildingLevel": 0, "buildingCode": "sa"}, "point": {"type": "Feature", "properties": {"kind": "route_point", "location_code": "sa0i4"}, "geometry": {"coordinates": [-46.632444, -23.530005], "type": "Point"}, "id": "348a3089dcc88c4487209ef0ecefd2ce"}}], "buildings": [{"code": "sa", "name": "Santiago", "numberOfLevels": 5, "outline": {"type": "Feature", "properties": {"building_code": "sa", "kind": "building_outline"}, "geometry": {"coordinates": [[[-46.632751, -23.530194], [-46.632642, -23.529819], [-46.632284, -23.529905], [-46.632391, -23.530281], [-46.632751, -23.530194]]], "type": "Polygon"}, "id": "1b4ee34395ed6fcd3a06588a8f589da1"}, "point": {"type": "Feature", "properties": {"building_code": "sa", "name": "Ed. Santiago", "longName": "Edifi\u00edcio Santiago", "kind": "building"}, "geometry": {"coordinates": [-46.632515, -23.53005], "type": "Point"}, "id": "8adabedd011cf85c2538155e522219b7"}}, {"code": "bb", "name": "Bloco B", "numberOfLevels": 6, "outline": {"type": "Feature", "properties": {"building_code": "bb", "kind": "building_outline"}, "geometry": {"coordinates": [[[-46.632764, -23.529321], [-46.632727, -23.529198], [-46.632264, -23.529318], [-46.632303, -23.529442], [-46.632764, -23.529321]]], "type": "Polygon"}, "id": "348120f0f2b7aac00b867dc29d4c010a"}, "point": {"type": "Feature", "properties": {"building_code": "bb", "name": "Bl. B", "longName": "Bloco B", "kind": "building"}, "geometry": {"coordinates": [-46.632504, -23.529323], "type": "Point"}, "id": "56bc08a79d249c035de14bed5bd966b5"}}, {"code": "ba", "name": "Bloco A", "numberOfLevels": 6, "point": {"type": "Feature", "properties": {"building_code": "ba", "name": "Bl. A", "longName": "Bloco A", "kind": "building"}, "geometry": {"coordinates": [-46.632447, -23.529131], "type": "Point"}, "id": "d8339095429a04cc0b932f0b5a24fe76"}, "outline": {"type": "Feature", "properties": {"building_code": "ba", "kind": "building_outline"}, "geometry": {"coordinates": [[[-46.632701, -23.529131], [-46.632662, -23.52901], [-46.632205, -23.529128], [-46.632245, -23.529251], [-46.632701, -23.529131]]], "type": "Polygon"}, "id": "f7607547ea6ea3c963d52f267a839d13"}}, {"code": "bc", "name": "Bloco C", "numberOfLevels": 3, "outline": {"type": "Feature", "properties": {"building_code": "bc", "kind": "building_outline"}, "geometry": {"coordinates": [[[-46.632914, -23.529663], [-46.63282, -23.529361], [-46.632273, -23.529506], [-46.632367, -23.529805], [-46.632914, -23.529663]]], "type": "Polygon"}, "id": "4334a5cb53208f2c5377cea1a718031d"}, "point": {"type": "Feature", "properties": {"building_code": "bc", "name": "Bl. C", "longName": "Bloco C", "kind": "building"}, "geometry": {"coordinates": [-46.632578, -23.529585], "type": "Point"}, "id": "71eb83b485dc24e0fdd0d37d5ff5fae2"}}], "routes": [{"from.id.code": "sa0a1", "to.id.code": "sa0i1", "from": "sa0a1", "to": "sa0i1"}, {"from.id.code": "sa0i1", "to.id.code": "sa0s1", "from": "sa0i1", "to": "sa0s1"}, {"from.id.code": "sa0i1", "to.id.code": "sa0s3", "from": "sa0i1", "to": "sa0s3"}, {"from.id.code": "sa0i1", "to.id.code": "sa0i2", "from": "sa0i1", "to": "sa0i2"}, {"from.id.code": "sa0i2", "to.id.code": "sa0s3", "from": "sa0i2", "to": "sa0s3"}, {"from.id.code": "sa0i2", "to.id.code": "sa0a4", "from": "sa0i2", "to": "sa0a4"}, {"from.id.code": "sa0i2", "to.id.code": "sa0a5", "from": "sa0i2", "to": "sa0a5"}, {"from.id.code": "sa0i2", "to.id.code": "sa0i3", "from": "sa0i2", "to": "sa0i3"}, {"from.id.code": "sa0i3", "to.id.code": "sa0a4", "from": "sa0i3", "to": "sa0a4"}, {"from.id.code": "sa0i3", "to.id.code": "sa0a5", "from": "sa0i3", "to": "sa0a5"}, {"from.id.code": "sa0i3", "to.id.code": "sa0s2", "from": "sa0i3", "to": "sa0s2"}, {"from.id.code": "sa0i3", "to.id.code": "sa0i4", "from": "sa0i3", "to": "sa0i4"}, {"from.id.code": "sa0i4", "to.id.code": "sa0s1", "from": "sa0i4", "to": "sa0s1"}, {"from.id.code": "sa0i4", "to.id.code": "sa0a2", "from": "sa0i4", "to": "sa0a2"}, {"from.id.code": "sa0i4", "to.id.code": "sa0a3", "from": "sa0i4", "to": "sa0a3"}]}
+{
+  "locations": [
+    {
+      "id.code": "sa0s1",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Biblioteca",
+      "type": "Service",
+      "id": {
+        "code": "sa0s1",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "location",
+          "location_code": "sa0s1"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632591,
+            -23.529894
+          ],
+          "type": "Point"
+        },
+        "id": "473f6f70826b7b89700ca6d1aa59a866"
+      }
+    },
+    {
+      "id.code": "sa0s2",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Secretaria",
+      "type": "Service",
+      "id": {
+        "code": "sa0s2",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0s2"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632458,
+            -23.530157
+          ],
+          "type": "Point"
+        },
+        "id": "d25542b64e83fefb89c3509dfaeefa52"
+      }
+    },
+    {
+      "id.code": "sa0s3",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Sala de Estudos",
+      "type": "Service",
+      "id": {
+        "code": "sa0s3",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "location",
+          "location_code": "sa0s3"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632667,
+            -23.53005
+          ],
+          "type": "Point"
+        },
+        "id": "f4fd95116eed4c9f003938400e082f09"
+      }
+    },
+    {
+      "id.code": "sa0a1",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Entrada",
+      "type": "Access",
+      "null": [
+        "Entrada aberta hoje"
+      ],
+      "id": {
+        "code": "sa0a1",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0a1"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632681,
+            -23.529958
+          ],
+          "type": "Point"
+        },
+        "id": "a9cedab23917e08c151409c7f3e615b5"
+      }
+    },
+    {
+      "id.code": "sa0a2",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Escada",
+      "type": "Access",
+      "null": [
+        "Escada pr\u00f3xima Hall"
+      ],
+      "id": {
+        "code": "sa0a2",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0a2"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632393,
+            -23.529964
+          ],
+          "type": "Point"
+        },
+        "id": "5fd468f8b9089c0f1f3450d0facaf1ef"
+      }
+    },
+    {
+      "id.code": "sa0a3",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Elevador",
+      "type": "Access",
+      "null": [
+        "Elevador pr\u00f3ximo ao Hall"
+      ],
+      "id": {
+        "code": "sa0a3",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0a3"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632416,
+            -23.530023
+          ],
+          "type": "Point"
+        },
+        "id": "c497522528e35b45f84a2d48004f2a70"
+      }
+    },
+    {
+      "id.code": "sa0a4",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Escada",
+      "type": "Access",
+      "null": [
+        "Escada pr\u00f3xima Hall"
+      ],
+      "id": {
+        "code": "sa0a4",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0a4"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632574,
+            -23.5301
+          ],
+          "type": "Point"
+        },
+        "id": "a36c9f37ba2bff44e8e38f7311f26882"
+      }
+    },
+    {
+      "id.code": "sa0a5",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "Elevador",
+      "type": "Access",
+      "null": [
+        "Elevador pr\u00f3ximo Hall"
+      ],
+      "id": {
+        "code": "sa0a5",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0a5"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632534,
+            -23.53011
+          ],
+          "type": "Point"
+        },
+        "id": "d241c9dc868950fe80b244bcdc932a5a"
+      }
+    },
+    {
+      "id.code": "sa0i1",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "",
+      "type": "Invisible",
+      "null": [
+        "ur"
+      ],
+      "id": {
+        "code": "sa0i1",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0i1"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632587,
+            -23.529976
+          ],
+          "type": "Point"
+        },
+        "id": "302ffbe9910c7281ed1f5ff3da10d4ab"
+      }
+    },
+    {
+      "id.code": "sa0i2",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "",
+      "type": "Invisible",
+      "null": [
+        "ul"
+      ],
+      "id": {
+        "code": "sa0i2",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0i2"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632623,
+            -23.530112
+          ],
+          "type": "Point"
+        },
+        "id": "e9dc1c9964dc87888e6c98fe73f0edb2"
+      }
+    },
+    {
+      "id.code": "sa0i3",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "",
+      "type": "Invisible",
+      "null": [
+        "ll"
+      ],
+      "id": {
+        "code": "sa0i3",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0i3"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632485,
+            -23.530144
+          ],
+          "type": "Point"
+        },
+        "id": "b3f3e5fe4b8486592e814aa8de460b47"
+      }
+    },
+    {
+      "id.code": "sa0i4",
+      "id.buildingLevel": "0",
+      "id.buildingCode": "sa",
+      "name": "",
+      "type": "Invisible",
+      "null": [
+        "lr"
+      ],
+      "id": {
+        "code": "sa0i4",
+        "buildingLevel": 0,
+        "buildingCode": "sa"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "kind": "route_point",
+          "location_code": "sa0i4"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632444,
+            -23.530005
+          ],
+          "type": "Point"
+        },
+        "id": "348a3089dcc88c4487209ef0ecefd2ce"
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "code": "sa",
+      "name": "Santiago",
+      "numberOfLevels": 5,
+      "outline": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "sa",
+          "kind": "building_outline"
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                -46.632751,
+                -23.530194
+              ],
+              [
+                -46.632642,
+                -23.529819
+              ],
+              [
+                -46.632284,
+                -23.529905
+              ],
+              [
+                -46.632391,
+                -23.530281
+              ],
+              [
+                -46.632751,
+                -23.530194
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": "1b4ee34395ed6fcd3a06588a8f589da1"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "sa",
+          "name": "Ed. Santiago",
+          "longName": "Edifi\u00edcio Santiago",
+          "kind": "building"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632515,
+            -23.53005
+          ],
+          "type": "Point"
+        },
+        "id": "8adabedd011cf85c2538155e522219b7"
+      }
+    },
+    {
+      "code": "bb",
+      "name": "Bloco B",
+      "numberOfLevels": 6,
+      "outline": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "bb",
+          "kind": "building_outline"
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                -46.632764,
+                -23.529321
+              ],
+              [
+                -46.632727,
+                -23.529198
+              ],
+              [
+                -46.632264,
+                -23.529318
+              ],
+              [
+                -46.632303,
+                -23.529442
+              ],
+              [
+                -46.632764,
+                -23.529321
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": "348120f0f2b7aac00b867dc29d4c010a"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "bb",
+          "name": "Bl. B",
+          "longName": "Bloco B",
+          "kind": "building"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632504,
+            -23.529323
+          ],
+          "type": "Point"
+        },
+        "id": "56bc08a79d249c035de14bed5bd966b5"
+      }
+    },
+    {
+      "code": "ba",
+      "name": "Bloco A",
+      "numberOfLevels": 6,
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "ba",
+          "name": "Bl. A",
+          "longName": "Bloco A",
+          "kind": "building"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632447,
+            -23.529131
+          ],
+          "type": "Point"
+        },
+        "id": "d8339095429a04cc0b932f0b5a24fe76"
+      },
+      "outline": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "ba",
+          "kind": "building_outline"
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                -46.632701,
+                -23.529131
+              ],
+              [
+                -46.632662,
+                -23.52901
+              ],
+              [
+                -46.632205,
+                -23.529128
+              ],
+              [
+                -46.632245,
+                -23.529251
+              ],
+              [
+                -46.632701,
+                -23.529131
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": "f7607547ea6ea3c963d52f267a839d13"
+      }
+    },
+    {
+      "code": "bc",
+      "name": "Bloco C",
+      "numberOfLevels": 3,
+      "outline": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "bc",
+          "kind": "building_outline"
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                -46.632914,
+                -23.529663
+              ],
+              [
+                -46.63282,
+                -23.529361
+              ],
+              [
+                -46.632273,
+                -23.529506
+              ],
+              [
+                -46.632367,
+                -23.529805
+              ],
+              [
+                -46.632914,
+                -23.529663
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": "4334a5cb53208f2c5377cea1a718031d"
+      },
+      "point": {
+        "type": "Feature",
+        "properties": {
+          "building_code": "bc",
+          "name": "Bl. C",
+          "longName": "Bloco C",
+          "kind": "building"
+        },
+        "geometry": {
+          "coordinates": [
+            -46.632578,
+            -23.529585
+          ],
+          "type": "Point"
+        },
+        "id": "71eb83b485dc24e0fdd0d37d5ff5fae2"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "from.id.code": "sa0a1",
+      "to.id.code": "sa0i1",
+      "from": "sa0a1",
+      "to": "sa0i1"
+    },
+    {
+      "from.id.code": "sa0i1",
+      "to.id.code": "sa0s1",
+      "from": "sa0i1",
+      "to": "sa0s1"
+    },
+    {
+      "from.id.code": "sa0i1",
+      "to.id.code": "sa0s3",
+      "from": "sa0i1",
+      "to": "sa0s3"
+    },
+    {
+      "from.id.code": "sa0i1",
+      "to.id.code": "sa0i2",
+      "from": "sa0i1",
+      "to": "sa0i2"
+    },
+    {
+      "from.id.code": "sa0i2",
+      "to.id.code": "sa0s3",
+      "from": "sa0i2",
+      "to": "sa0s3"
+    },
+    {
+      "from.id.code": "sa0i2",
+      "to.id.code": "sa0a4",
+      "from": "sa0i2",
+      "to": "sa0a4"
+    },
+    {
+      "from.id.code": "sa0i2",
+      "to.id.code": "sa0a5",
+      "from": "sa0i2",
+      "to": "sa0a5"
+    },
+    {
+      "from.id.code": "sa0i2",
+      "to.id.code": "sa0i3",
+      "from": "sa0i2",
+      "to": "sa0i3"
+    },
+    {
+      "from.id.code": "sa0i3",
+      "to.id.code": "sa0a4",
+      "from": "sa0i3",
+      "to": "sa0a4"
+    },
+    {
+      "from.id.code": "sa0i3",
+      "to.id.code": "sa0a5",
+      "from": "sa0i3",
+      "to": "sa0a5"
+    },
+    {
+      "from.id.code": "sa0i3",
+      "to.id.code": "sa0s2",
+      "from": "sa0i3",
+      "to": "sa0s2"
+    },
+    {
+      "from.id.code": "sa0i3",
+      "to.id.code": "sa0i4",
+      "from": "sa0i3",
+      "to": "sa0i4"
+    },
+    {
+      "from.id.code": "sa0i4",
+      "to.id.code": "sa0s1",
+      "from": "sa0i4",
+      "to": "sa0s1"
+    },
+    {
+      "from.id.code": "sa0i4",
+      "to.id.code": "sa0a2",
+      "from": "sa0i4",
+      "to": "sa0a2"
+    },
+    {
+      "from.id.code": "sa0i4",
+      "to.id.code": "sa0a3",
+      "from": "sa0i4",
+      "to": "sa0a3"
+    }
+  ]
+}
