@@ -8,7 +8,12 @@
 
 import Foundation
 
-public struct Building: Codable {
+public protocol Listable {
+    var title: String { get }
+    var description: String { get }
+}
+
+public struct Building: Codable, Equatable {
     public let code: String
     public let name: String
     public let numberOfLevels: Int
@@ -64,10 +69,35 @@ public struct Location: Equatable, Hashable, Codable {
     public let name: String
     public let type: LocationType
     public var point: Feature
+    public var building: Building? = nil
 
     public var hashValue: Int {
         return id.hashValue
     }
+}
+
+extension Building: Listable {
+    public var title: String {
+        return self.name
+    }
+    
+    public var description: String {
+        return "\(self.numberOfLevels) andares"
+    }
+    
+    
+}
+
+extension Location: Listable {
+    public var title: String {
+        return self.name
+    }
+    
+    public var description: String {
+        return "\(self.building?.name ?? "")\n\(self.id.floor)"
+    }
+    
+    
 }
 
 public class PointsOfInterest: NSObject {
@@ -77,9 +107,11 @@ public class PointsOfInterest: NSObject {
     let routes: Routing<Location>
     let buildings: [Building]
     let buildingsByCode: [String: Building]
+    let listables: [Listable]
 
     public init(pointsOfInterest: [Location], buildings: [Building], routes: [[String:String]]) {
         self.pointsOfInterest = pointsOfInterest
+    
         self.pointsOfInterestByBuilding = pointsOfInterest.reduce(into: [:]) { result, location in
             var l = (result[location.id.buildingCode] ?? [])
             l.append(location)
@@ -92,6 +124,9 @@ public class PointsOfInterest: NSObject {
         self.buildingsByCode = buildings.reduce(into: [:]) { result, building in
             result[building.code] = building
         }
+        for var location in self.pointsOfInterest {
+            location.building = self.buildingsByCode[location.id.buildingCode]
+        }
         let builder = Routing<Location>.Builder()
         for location in pointsOfInterest {
             builder.node(t: location)
@@ -103,11 +138,24 @@ public class PointsOfInterest: NSObject {
                 try? builder.route(from: toLocation, to: fromLocation)
             }
         }
+        
+        var listables: [Listable] = []
+        
+        for building in self.buildings {
+            listables.append(building)
+        }
+        
+        for location in self.pointsOfInterest {
+            listables.append(location)
+        }
+        
+        self.listables = listables
+        
         self.routes = builder.build()
     }
     
-    public func listing() -> [Location] {
-        return pointsOfInterest
+    public func listing() -> [Listable] {
+        return listables
     }
     
     public func allBuildings() -> [Building] {

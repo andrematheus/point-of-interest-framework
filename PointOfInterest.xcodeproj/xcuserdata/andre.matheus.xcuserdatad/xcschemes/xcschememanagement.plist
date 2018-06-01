@@ -12,16 +12,16 @@
 		<key>PointOfInterestTests.testShouldNotReturnInvisiblePointsOfInterestInListing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<false />
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
 		<key>PointOfInterestTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<false />
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 </dict>
