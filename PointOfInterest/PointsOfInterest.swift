@@ -19,6 +19,11 @@ public struct Building: Codable, Equatable {
     public let numberOfLevels: Int
     public let outline: Feature
     public let point: Feature
+    public var planImage: UIImage? {
+        get {
+            return UIImage.init(named: self.code)
+        }
+    }
 }
 
 public struct LocationId: Equatable, Hashable, Codable {

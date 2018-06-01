@@ -19,6 +19,17 @@ public enum Coordinates: Equatable{
     case Point(CLLocationCoordinate2D)
     case Polygon([[CLLocationCoordinate2D]])
     case Unsupported
+    
+    public func coordinates() -> [CLLocationCoordinate2D] {
+        switch self {
+        case .Point(let coord):
+            return [coord]
+        case .Polygon(let coords):
+            return coords[0]
+        case .Unsupported:
+            return []
+        }
+    }
 }
 
 extension CLLocationCoordinate2D: Codable {
