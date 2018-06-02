@@ -106,16 +106,16 @@ extension Location: Listable {
 }
 
 public class PointsOfInterest: NSObject {
-    let pointsOfInterest: [Location]
-    let pointsOfInterestByBuilding: [String: [Location]]
-    let locationsByCode: [String: Location]
-    let routes: Routing<Location>
-    let buildings: [Building]
-    let buildingsByCode: [String: Building]
-    let listables: [Listable]
+    public let pointsOfInterest: [Location]
+    public let pointsOfInterestByBuilding: [String: [Location]]
+    public let locationsByCode: [String: Location]
+    public let routes: Routing<Location>
+    public let buildings: [Building]
+    public let buildingsByCode: [String: Building]
+    public let listables: [Listable]
 
     public init(pointsOfInterest: [Location], buildings: [Building], routes: [[String:String]]) {
-        self.pointsOfInterest = pointsOfInterest
+        var pointsOfInterest = pointsOfInterest
     
         self.pointsOfInterestByBuilding = pointsOfInterest.reduce(into: [:]) { result, location in
             var l = (result[location.id.buildingCode] ?? [])
@@ -129,9 +129,12 @@ public class PointsOfInterest: NSObject {
         self.buildingsByCode = buildings.reduce(into: [:]) { result, building in
             result[building.code] = building
         }
-        for var location in self.pointsOfInterest {
+        var wb: [Location]  = []
+        for var location in pointsOfInterest {
             location.building = self.buildingsByCode[location.id.buildingCode]
+            wb.append(location)
         }
+        self.pointsOfInterest = wb
         let builder = Routing<Location>.Builder()
         for location in pointsOfInterest {
             builder.node(t: location)
