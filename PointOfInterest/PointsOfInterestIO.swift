@@ -7,26 +7,143 @@
 //
 
 import Foundation
+import CoreLocation
 
-public protocol PointsOfInterestConvertible {
-    func toPointsOfInterest() throws -> PointsOfInterest
+extension CLLocationCoordinate2D: Codable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        try container.encode(longitude)
+        try container.encode(latitude)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        self.init()
+        longitude = try container.decode(Double.self)
+        latitude = try container.decode(Double.self)
+    }
 }
 
-public enum PointsOfInterestConversionError : Error {
-    case InvalidInput
-    case InvalidLocationType
+struct BuildingData: Decodable {
+    let code: String
+    let name: String
+    let numberOfLevels: Int
+    let outline: Feature
+    let point: Feature
 }
 
-public struct LocationsFile: Codable {
-    let buildings: [Building]
-    let locations: [Location]
-    let routes: [[String:String]]
+struct LocationData: Decodable {
+    let buildingCode: String
+    let buildingLevel: String
+    let code: String
+    let name: String
+    let type: String
+    let point: Feature
+    let route_point: Feature
+    
+    private enum CodingKeys: String, CodingKey {
+        case buildingCode = "id.buildingCode"
+        case buildingLevel = "id.buildingLevel"
+        case code = "id.code"
+        case name
+        case point
+        case route_point
+        case type
+    }
 }
 
-extension Data : PointsOfInterestConvertible {
-    public func toPointsOfInterest() throws -> PointsOfInterest {
+struct FatecData: Decodable {
+    let point: Feature
+    let outline: Feature
+}
+
+struct MapDataFile: Decodable {
+    let buildingData: [BuildingData]
+    let locationData: [LocationData]
+    let routeData: [[String : String]]
+    let fatecData: FatecData
+    
+    private enum CodingKeys: String, CodingKey {
+        case buildingData = "buildings"
+        case locationData = "locations"
+        case routeData = "routes"
+        case fatecData = "fatec"
+    }
+}
+
+func indexedLocations(locations: [Location]) -> [String: Location] {
+    return locations.reduce(into: [:]) { result, location in
+        result[location.id.code] = location
+    }
+}
+
+func indexedBuildings(buildings: [Building]) -> [String: Building]{
+    return buildings.reduce(into: [:]) { result, building in
+        result[building.code] = building
+    }
+}
+
+func locationsIndexedByBuilding(locations: [Location]) -> [String: [Location]] {
+    return locations.reduce(into: [:]) { result, location in
+        result[location.id.buildingCode, default: []].append(location)
+    }
+}
+
+func allPointsOfInterest(buildings: [Building], locations: [Location]) -> [PointOfInterest] {
+    var pois: [PointOfInterest] = []
+    pois.append(contentsOf: buildings)
+    pois.append(contentsOf: locations)
+    return pois
+}
+
+func setupRoutes(locations: [Location], locationsByCode: [String: Location], routeData: [[String: String]]) -> Routing<Location> {
+    let builder = Routing<Location>.Builder()
+    for location in locations {
+        builder.node(t: location)
+    }
+    for routeSpec in routeData {
+        if let fromId = routeSpec["from"], let toId = routeSpec["to"],
+            let fromLocation = locationsByCode[fromId], let toLocation = locationsByCode[toId] {
+            try? builder.route(from: fromLocation, to: toLocation)
+            try? builder.route(from: toLocation, to: fromLocation)
+        }
+    }
+    
+    return builder.build()
+}
+
+public class MapData {
+    public let buildings: [Building]
+    public let locations: [Location]
+    public let fatec: Fatec
+    public let routes: Routing<Location>
+    public let locationsByCode: [String : Location]
+    public let buildingsByCode: [String : Building]
+    public let pointsOfInterest: [PointOfInterest]
+    public let locationsByBuilding: [String: [Location]]
+    
+    // MARK: - Init
+    init(with dataFile: MapDataFile) {
+        self.buildings = dataFile.buildingData.map(Building.init)
+        self.locations = dataFile.locationData.map(Location.init)
+        self.fatec = Fatec(data: dataFile.fatecData)
+        self.locationsByCode = indexedLocations(locations: self.locations)
+        self.buildingsByCode = indexedBuildings(buildings: self.buildings)
+        self.routes = setupRoutes(locations: locations, locationsByCode: self.locationsByCode, routeData: dataFile.routeData)
+        self.pointsOfInterest = allPointsOfInterest(buildings: self.buildings, locations: self.locations)
+        self.locationsByBuilding = locationsIndexedByBuilding(locations: self.locations)
+        updateBuildingInLocations()
+    }
+    
+    func updateBuildingInLocations() {
+        for location in self.locations {
+            location.building = self.buildingsByCode[location.id.buildingCode]
+        }
+    }
+    
+    public static func fromData(_ data: Data) throws -> MapData {
         let decoder = JSONDecoder()
-        let locationsFile = try! decoder.decode(LocationsFile.self, from: self)
-        return PointsOfInterest(pointsOfInterest: locationsFile.locations, buildings: locationsFile.buildings, routes: locationsFile.routes)
+        let mapDataFile = try! decoder.decode(MapDataFile.self, from: data)
+        return MapData(with: mapDataFile)
     }
 }

@@ -14,7 +14,7 @@ class ConversionTests: XCTestCase {
         let path = Bundle(for: type(of: self)).path(forResource: "Locations", ofType: "json")
         let data = FileManager.default.contents(atPath: path!)
         let decoder = JSONDecoder()
-        let locationsFile = try! decoder.decode(LocationsFile.self, from: data!)
+        let locationsFile = try! decoder.decode(PointsOfInterestdata.self, from: data!)
         XCTAssertEqual(locationsFile.buildings.count, 4)
     }
 }

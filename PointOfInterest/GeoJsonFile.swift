@@ -15,7 +15,7 @@ extension CLLocationCoordinate2D: Equatable {
     }
 }
 
-public enum Coordinates: Equatable{
+public enum Coordinates: Equatable {
     case Point(CLLocationCoordinate2D)
     case Polygon([[CLLocationCoordinate2D]])
     case Unsupported
@@ -32,27 +32,12 @@ public enum Coordinates: Equatable{
     }
 }
 
-extension CLLocationCoordinate2D: Codable {
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.unkeyedContainer()
-        try container.encode(longitude)
-        try container.encode(latitude)
-    }
-    
-    public init(from decoder: Decoder) throws {
-        var container = try decoder.unkeyedContainer()
-        self.init()
-        longitude = try container.decode(Double.self)
-        latitude = try container.decode(Double.self)
-    }
-}
-
 public struct FeatureGeometry: Equatable {
     public let coordinates: Coordinates
     public let type: String
 }
 
-extension FeatureGeometry: Codable {
+extension FeatureGeometry: Decodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -92,7 +77,7 @@ extension FeatureGeometry: Codable {
     }
 }
 
-public struct Feature: Codable, Equatable {
+public struct Feature: Decodable, Equatable {
     public let type: FeatureType
     public let properties: [String: String]
     public let geometry: FeatureGeometry
