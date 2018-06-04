@@ -14,6 +14,8 @@ import CoreLocation
 public protocol PointOfInterest {
     var title: String { get }
     var description: String { get }
+    var visibleInMap: Bool { get }
+    var visibleInList: Bool { get }
 }
 
 public struct QuadPolygon: Codable, Equatable {
@@ -65,6 +67,10 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
         self.point = data.point.geometry.coordinates.coordinates()[0]
     }
     
+    public var visibleInMap: Bool = true
+    
+    public var visibleInList: Bool = true
+
     // MARK: ShowAsImage
     public var planImage: UIImage? {
         return UIImage.init(named: self.code)
@@ -111,7 +117,7 @@ public enum LocationType: String, Codable, Equatable {
     case Access
     case Other
 
-    public func showInList() -> Bool {
+    public var visibleInList: Bool {
         switch self {
         case .Invisible: return false
         case .Access: return false
@@ -119,7 +125,7 @@ public enum LocationType: String, Codable, Equatable {
         }
     }
     
-    public func showInMap() -> Bool {
+    public var visibleInMap: Bool {
         switch self {
         case .Invisible: return false
         default: return true
@@ -142,6 +148,14 @@ public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
     }
     
     public var building: Building? = nil
+    
+    public var visibleInMap: Bool {
+        return type.visibleInMap
+    }
+    
+    public var visibleInList: Bool {
+        return type.visibleInList
+    }
 
     // MARK: Hashable
     public var hashValue: Int {
@@ -163,7 +177,9 @@ public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
     }
 }
 
-public class Fatec: ShowAsVector, ShowsAsImage, HasPoint {
+public class Fatec: Equatable, ShowAsVector, ShowsAsImage, HasPoint, PointOfInterest {
+    public var title = "FATEC"
+    public var description = "Faculdade de Tecnologia de São Paulo"
     public let point: CLLocationCoordinate2D
     public let quadPolygon: QuadPolygon
     
@@ -173,7 +189,37 @@ public class Fatec: ShowAsVector, ShowsAsImage, HasPoint {
         self.quadPolygon = QuadPolygon(topLeft: coords[0], bottomLeft: coords[1], bottomRight: coords[2], topRight: coords[3])
     }
     
+    public var visibleInMap: Bool = true
+    
+    public var visibleInList: Bool = false
+    
     public var planImage: UIImage? {
         return UIImage.init(named: "fatec")
     }
+    public static func == (lhs: Fatec, rhs: Fatec) -> Bool {
+        return true
+    }
 }
+
+public class Surroundings: Equatable, HasQuad, PointOfInterest {
+    public var title = "Arredores"
+    public var description = "Arredores da FATEC"
+    public let point: CLLocationCoordinate2D
+    public var quadPolygon: QuadPolygon
+    
+    init(data: SurroundingsData) {
+        let coords = data.outline.geometry.coordinates.coordinates()
+        self.point = data.point.geometry.coordinates.coordinates()[0]
+        self.quadPolygon = QuadPolygon(topLeft: coords[0], bottomLeft: coords[1], bottomRight: coords[2], topRight: coords[3])
+    }
+    
+    public var visibleInMap: Bool = false
+    
+    public var visibleInList: Bool = false
+    
+    public static func == (lhs: Surroundings, rhs: Surroundings) -> Bool {
+        return true
+    }
+}
+
+

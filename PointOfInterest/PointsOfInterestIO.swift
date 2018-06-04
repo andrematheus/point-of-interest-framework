@@ -57,17 +57,24 @@ struct FatecData: Decodable {
     let outline: Feature
 }
 
+struct SurroundingsData: Decodable {
+    let point: Feature
+    let outline: Feature
+}
+
 struct MapDataFile: Decodable {
     let buildingData: [BuildingData]
     let locationData: [LocationData]
     let routeData: [[String : String]]
     let fatecData: FatecData
+    let surroundingsData: SurroundingsData
     
     private enum CodingKeys: String, CodingKey {
         case buildingData = "buildings"
         case locationData = "locations"
         case routeData = "routes"
         case fatecData = "fatec"
+        case surroundingsData = "surroundings"
     }
 }
 
@@ -96,6 +103,14 @@ func allPointsOfInterest(buildings: [Building], locations: [Location]) -> [Point
     return pois
 }
 
+func poisVisibleInMap(pois: [PointOfInterest]) {
+    
+}
+
+func poisVisibleInListing(pois: [PointOfInterest]) {
+    
+}
+
 func setupRoutes(locations: [Location], locationsByCode: [String: Location], routeData: [[String: String]]) -> Routing<Location> {
     let builder = Routing<Location>.Builder()
     for location in locations {
@@ -116,6 +131,7 @@ public class MapData {
     public let buildings: [Building]
     public let locations: [Location]
     public let fatec: Fatec
+    public let surroundings: Surroundings
     public let routes: Routing<Location>
     public let locationsByCode: [String : Location]
     public let buildingsByCode: [String : Building]
@@ -127,6 +143,7 @@ public class MapData {
         self.buildings = dataFile.buildingData.map(Building.init)
         self.locations = dataFile.locationData.map(Location.init)
         self.fatec = Fatec(data: dataFile.fatecData)
+        self.surroundings = Surroundings(data: dataFile.surroundingsData)
         self.locationsByCode = indexedLocations(locations: self.locations)
         self.buildingsByCode = indexedBuildings(buildings: self.buildings)
         self.routes = setupRoutes(locations: locations, locationsByCode: self.locationsByCode, routeData: dataFile.routeData)
