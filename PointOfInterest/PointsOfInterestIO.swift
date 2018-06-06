@@ -142,6 +142,7 @@ public class MapData {
     public let buildingsByCode: [String : Building]
     public let locationsByBuilding: [String: [Location]]
     public let pointsOfInterestForMap: [PointOfInterest]
+    public let pointsOfInterestForList: [PointOfInterest]
     public let buildingsForList: [Building]
     public let locationsForList: [Location]
     public let buildings: [Building]
@@ -162,6 +163,7 @@ public class MapData {
         self.locationsByBuilding = locationsIndexedByBuilding(locations: self.locations)
         updateBuildingInLocations(self.locations, buildingsByCode: self.buildingsByCode)
         self.pointsOfInterestForMap = self.pointsOfInterest.filter { poi in poi.visibleInMap }
+        self.pointsOfInterestForList = self.pointsOfInterest.filter { poi in poi.visibleInList }
         self.buildingsForList = self.buildings.filter { poi in poi.visibleInList }
         self.locationsForList = self.locations.filter { loc in loc.visibleInList }
     }
