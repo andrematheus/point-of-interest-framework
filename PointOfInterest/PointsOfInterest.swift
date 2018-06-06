@@ -143,6 +143,7 @@ public enum LocationType: String, Codable, Equatable {
     public var visibleInMap: Bool {
         switch self {
         case .Invisible: return false
+        case .Access: return false
         default: return true
         }
     }
