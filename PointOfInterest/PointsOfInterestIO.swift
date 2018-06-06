@@ -127,16 +127,27 @@ func setupRoutes(locations: [Location], locationsByCode: [String: Location], rou
     return builder.build()
 }
 
+func updateBuildingInLocations(_ locations: [Location], buildingsByCode: [String: Building]) {
+    for location in locations {
+        location.building = buildingsByCode[location.id.buildingCode]
+        location.building?.addLocation(location)
+    }
+}
+
 public class MapData {
-    public let buildings: [Building]
-    public let locations: [Location]
     public let fatec: Fatec
     public let surroundings: Surroundings
     public let routes: Routing<Location>
     public let locationsByCode: [String : Location]
     public let buildingsByCode: [String : Building]
-    public let pointsOfInterest: [PointOfInterest]
     public let locationsByBuilding: [String: [Location]]
+    public let pointsOfInterestForMap: [PointOfInterest]
+    public let buildingsForList: [Building]
+    public let locationsForList: [Location]
+    public let buildings: [Building]
+    public let locations: [Location]
+    
+    let pointsOfInterest: [PointOfInterest]
     
     // MARK: - Init
     init(with dataFile: MapDataFile) {
@@ -149,13 +160,10 @@ public class MapData {
         self.routes = setupRoutes(locations: locations, locationsByCode: self.locationsByCode, routeData: dataFile.routeData)
         self.pointsOfInterest = allPointsOfInterest(buildings: self.buildings, locations: self.locations)
         self.locationsByBuilding = locationsIndexedByBuilding(locations: self.locations)
-        updateBuildingInLocations()
-    }
-    
-    func updateBuildingInLocations() {
-        for location in self.locations {
-            location.building = self.buildingsByCode[location.id.buildingCode]
-        }
+        updateBuildingInLocations(self.locations, buildingsByCode: self.buildingsByCode)
+        self.pointsOfInterestForMap = self.pointsOfInterest.filter { poi in poi.visibleInMap }
+        self.buildingsForList = self.buildings.filter { poi in poi.visibleInList }
+        self.locationsForList = self.locations.filter { loc in loc.visibleInList }
     }
     
     public static func fromData(_ data: Data) throws -> MapData {

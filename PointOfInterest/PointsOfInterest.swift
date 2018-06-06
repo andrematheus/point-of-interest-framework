@@ -57,6 +57,8 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
     public let numberOfLevels: Int
     public let quadPolygon: QuadPolygon
     public let point: CLLocationCoordinate2D
+    private var _locationsForList: [Location] = []
+    private var locations: [Location] = []
     
     init(data: BuildingData) {
         self.code = data.code
@@ -69,7 +71,20 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
     
     public var visibleInMap: Bool = true
     
-    public var visibleInList: Bool = true
+    public var visibleInList: Bool {
+        return !locations.isEmpty
+    }
+    
+    public var locationsForList: [Location] {
+        return self._locationsForList
+    }
+    
+    func addLocation(_ location: Location) {
+        locations.append(location)
+        if location.visibleInList {
+            _locationsForList.append(location)
+        }
+    }
 
     // MARK: ShowAsImage
     public var planImage: UIImage? {
