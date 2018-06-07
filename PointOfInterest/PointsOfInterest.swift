@@ -16,6 +16,8 @@ public protocol PointOfInterest {
     var description: String { get }
     var visibleInMap: Bool { get }
     var visibleInList: Bool { get }
+    var hasMoreThanOneLevel: Bool { get }
+    var levels: [Int] { get }
 }
 
 public struct QuadPolygon: Codable, Equatable {
@@ -41,7 +43,7 @@ public protocol HasQuad {
 }
 
 public protocol ShowsAsImage: HasQuad {
-    var planImage: UIImage? { get }
+    var planImageKey: String { get }
 }
 
 public protocol ShowAsVector: HasQuad {}
@@ -52,13 +54,17 @@ public protocol HasPoint {
 
 // MARK: - Domain Objects
 public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfInterest {
+    public var planImageKey: String {
+        return self.code
+    }
+    
     public let code: String
     public let name: String
     public let numberOfLevels: Int
     public let quadPolygon: QuadPolygon
     public let point: CLLocationCoordinate2D
     private var _locationsForList: [Location] = []
-    private var locations: [Location] = []
+    private var locations: [Int: [Location]] = [:]
     
     init(data: BuildingData) {
         self.code = data.code
@@ -79,17 +85,22 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
         return self._locationsForList
     }
     
+    public var hasMoreThanOneLevel: Bool {
+        return locations.keys.count > 1
+    }
+    
+    public var levels: [Int] {
+        return Array(locations.keys).sorted()
+    }
+
+    
     func addLocation(_ location: Location) {
-        locations.append(location)
+        locations[location.id.buildingLevel, default: []].append(location)
         if location.visibleInList {
             _locationsForList.append(location)
         }
     }
 
-    // MARK: ShowAsImage
-    public var planImage: UIImage? {
-        return UIImage.init(named: self.code)
-    }
     
     // MARK: Equatable
     public static func == (lhs: Building, rhs: Building) -> Bool {
@@ -106,17 +117,21 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
     }
 }
 
+public func floorLabel(_ buildingLevel: Int) -> String {
+    if buildingLevel == 0 {
+        return "T"
+    } else {
+        return "\(buildingLevel)º"
+    }
+}
+
 public struct LocationId: Equatable, Hashable, Codable {
     public let buildingCode: String
     public let buildingLevel: Int
     public let code: String
     
     public var floor: String {
-        if buildingLevel == 0 {
-            return "Térreo"
-        } else {
-            return "\(buildingLevel)º andar"
-        }
+        return floorLabel(buildingLevel)
     }
     
     public var hashValue: Int {
@@ -150,6 +165,10 @@ public enum LocationType: String, Codable, Equatable {
 }
 
 public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
+    public let hasMoreThanOneLevel: Bool = false
+    
+    public let levels: [Int] = [0]
+    
     public let id: LocationId
     public let name: String
     public let type: LocationType
@@ -194,6 +213,12 @@ public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
 }
 
 public class Fatec: Equatable, ShowAsVector, ShowsAsImage, HasPoint, PointOfInterest {
+    public let planImageKey: String = "fatec"
+    
+    public let hasMoreThanOneLevel: Bool = false
+    
+    public let levels: [Int] = [0]
+
     public var title = "FATEC"
     public var description = "Faculdade de Tecnologia de São Paulo"
     public let point: CLLocationCoordinate2D
@@ -209,15 +234,16 @@ public class Fatec: Equatable, ShowAsVector, ShowsAsImage, HasPoint, PointOfInte
     
     public var visibleInList: Bool = false
     
-    public var planImage: UIImage? {
-        return UIImage.init(named: "fatec")
-    }
     public static func == (lhs: Fatec, rhs: Fatec) -> Bool {
         return true
     }
 }
 
 public class Surroundings: Equatable, HasQuad, PointOfInterest {
+    public let hasMoreThanOneLevel: Bool = false
+    
+    public let levels: [Int] = [0]
+
     public var title = "Arredores"
     public var description = "Arredores da FATEC"
     public let point: CLLocationCoordinate2D
