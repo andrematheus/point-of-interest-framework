@@ -16,6 +16,7 @@ public protocol PointOfInterest {
     var description: String { get }
     var visibleInMap: Bool { get }
     var visibleInList: Bool { get }
+    var displaysInfo: Bool { get }
     var hasMoreThanOneLevel: Bool { get }
     var levels: [Int] { get }
 }
@@ -80,6 +81,8 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
     public var visibleInList: Bool {
         return !locations.isEmpty
     }
+    
+    public var displaysInfo: Bool = false
     
     public var locationsForList: [Location] {
         return self._locationsForList
@@ -192,6 +195,8 @@ public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
         return type.visibleInList
     }
 
+    public var displaysInfo: Bool = true
+    
     // MARK: Hashable
     public var hashValue: Int {
         return id.hashValue
@@ -234,6 +239,8 @@ public class Fatec: Equatable, ShowAsVector, ShowsAsImage, HasPoint, PointOfInte
     
     public var visibleInList: Bool = false
     
+    public var displaysInfo: Bool = false
+    
     public static func == (lhs: Fatec, rhs: Fatec) -> Bool {
         return true
     }
@@ -258,6 +265,8 @@ public class Surroundings: Equatable, HasQuad, PointOfInterest {
     public var visibleInMap: Bool = false
     
     public var visibleInList: Bool = false
+    
+    public var displaysInfo: Bool = false
     
     public static func == (lhs: Surroundings, rhs: Surroundings) -> Bool {
         return true
