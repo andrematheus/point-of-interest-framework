@@ -165,6 +165,13 @@ public enum LocationType: String, Codable, Equatable {
         default: return true
         }
     }
+    
+    public var breaksRoute: Bool {
+        switch self {
+        case .Invisible: return false
+        default: return true
+        }
+    }
 }
 
 public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
@@ -275,6 +282,52 @@ public class Surroundings: Equatable, HasQuad, PointOfInterest {
     }
 }
 
+public struct LocationRouteLeg: PointOfInterest {
+    public var code: String {
+        return "leg-\(from.id.code)-\(to.id.code)"
+    }
+    public var title: String {
+        return "\(self.from.title) até \(self.to.title)"
+    }
+    
+    public var description: String {
+        return self.title
+    }
+    
+    public var visibleInMap: Bool {
+        return true
+    }
+    
+    public var visibleInList: Bool {
+        return false
+    }
+    
+    public var displaysInfo: Bool {
+        return true
+    }
+    
+    public var hasMoreThanOneLevel: Bool {
+        return false
+    }
+    
+    public var levels: [Int] {
+        return []
+    }
+    
+    public var coordinates: [CLLocationCoordinate2D] {
+        var coords: [CLLocationCoordinate2D] = [from.point]
+        for location in middle {
+            coords.append(location.point)
+        }
+        coords.append(to.point)
+        return coords
+    }
+    
+    public let from: Location
+    public let middle: [Location]
+    public let to: Location
+}
+
 extension Route: PointOfInterest where T: Location {
     public var code: String {
         return "\(from.id.code)-\(to.id.code)"
@@ -282,6 +335,21 @@ extension Route: PointOfInterest where T: Location {
     
     public var from: Location {
         return self.nodes[0]
+    }
+    
+    public var locationLegs: [LocationRouteLeg] {
+        var currentLeg: (Location, [Location], Location?) = (self.from, [], nil)
+        var locationLegs: [LocationRouteLeg] = []
+        for leg in self.legs {
+            if leg.1.type.breaksRoute {
+                currentLeg.2 = leg.1
+                locationLegs.append(LocationRouteLeg(from: currentLeg.0, middle: currentLeg.1, to: currentLeg.2!))
+                currentLeg = (leg.1, [], nil)
+            } else {
+                currentLeg.1.append(leg.1)
+            }
+        }
+        return locationLegs
     }
     
     public var to: Location {
