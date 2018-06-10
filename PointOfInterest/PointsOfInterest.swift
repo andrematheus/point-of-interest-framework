@@ -315,11 +315,11 @@ public struct LocationRouteLeg: PointOfInterest {
     }
     
     public var coordinates: [CLLocationCoordinate2D] {
-        var coords: [CLLocationCoordinate2D] = [from.point]
+        var coords: [CLLocationCoordinate2D] = [from.routePoint]
         for location in middle {
-            coords.append(location.point)
+            coords.append(location.routePoint)
         }
-        coords.append(to.point)
+        coords.append(to.routePoint)
         return coords
     }
     
