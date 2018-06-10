@@ -6,8 +6,8 @@
 import Foundation
 
 public struct Route<T> {
-    let nodes: [T]
-    let legs: [(T,T)]
+    public let nodes: [T]
+    public let legs: [(T,T)]
     
     init(nodes: [T]) {
         self.nodes = nodes
@@ -33,7 +33,7 @@ public class Routing<T: Hashable>: NSObject {
         self.routes = routes
     }
     
-    func route(from: T, to: T) -> Route<T>? {
+    public func route(from: T, to: T) -> Route<T>? {
         var nodeStack: [(T, [T])] = []
         nodeStack.append((from, [from]))
         var used: Set<T> = []

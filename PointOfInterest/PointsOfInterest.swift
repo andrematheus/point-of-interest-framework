@@ -176,6 +176,7 @@ public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
     public let name: String
     public let type: LocationType
     public let point: CLLocationCoordinate2D
+    public let routePoint: CLLocationCoordinate2D
     
     init(data: LocationData) {
         let level = Int(data.buildingLevel)
@@ -183,6 +184,7 @@ public class Location: Equatable, Hashable, HasPoint, PointOfInterest {
         self.name = data.name
         self.type = LocationType.init(rawValue: data.type)!
         self.point = data.point.geometry.coordinates.coordinates()[0]
+        self.routePoint = data.route_point.geometry.coordinates.coordinates()[0]
     }
     
     public var building: Building? = nil
@@ -273,4 +275,52 @@ public class Surroundings: Equatable, HasQuad, PointOfInterest {
     }
 }
 
-
+extension Route: PointOfInterest where T: Location {
+    public var code: String {
+        return "\(from.id.code)-\(to.id.code)"
+    }
+    
+    public var from: Location {
+        return self.nodes[0]
+    }
+    
+    public var to: Location {
+        return self.nodes.last!
+    }
+    
+    public var coordinates: [CLLocationCoordinate2D] {
+        return self.nodes.map { l in l.routePoint }
+    }
+    
+    public var visibleInMap: Bool {
+        return true
+    }
+    
+    public var visibleInList: Bool {
+        return false
+    }
+    
+    public var displaysInfo: Bool {
+        return true
+    }
+    
+    public var hasMoreThanOneLevel: Bool {
+        return false
+    }
+    
+    public var levels: [Int] {
+        return []
+    }
+    
+    public var title: String {
+        let from = self.nodes[0]
+        let to = self.nodes.last!
+        return "\(from.title) até \(to.title)"
+    }
+    
+    public var description: String {
+        let from = self.nodes[0]
+        let to = self.nodes.last!
+        return "Itinerário de \(from.title) até \(to.title)"
+    }
+}
