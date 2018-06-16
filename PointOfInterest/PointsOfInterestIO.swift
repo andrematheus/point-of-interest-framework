@@ -146,6 +146,7 @@ public class MapData {
     public let buildingsForList: [Building]
     public let locationsForList: [Location]
     public let locationsForMap: [Location]
+    public let locationsWithoutBuilding: [Location]
     public let buildings: [Building]
     public let locations: [Location]
     
@@ -168,6 +169,7 @@ public class MapData {
         self.buildingsForList = self.buildings.filter { poi in poi.visibleInList }
         self.locationsForList = self.locations.filter { loc in loc.visibleInList }
         self.locationsForMap = self.locations.filter { loc in loc.visibleInMap }
+        self.locationsWithoutBuilding = self.locations.filter { loc in loc.building?.locationsForList.count == 1}
     }
     
     public static func fromData(_ data: Data) throws -> MapData {

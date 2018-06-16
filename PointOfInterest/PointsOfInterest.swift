@@ -79,7 +79,7 @@ public class Building: Equatable, HasPoint, ShowAsVector, ShowsAsImage, PointOfI
     public var visibleInMap: Bool = true
     
     public var visibleInList: Bool {
-        return !locations.isEmpty
+        return locations.count > 1
     }
     
     public var displaysInfo: Bool = false
