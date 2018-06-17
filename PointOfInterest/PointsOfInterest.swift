@@ -144,7 +144,7 @@ public struct LocationId: Equatable, Hashable, Codable {
 
 public enum LocationType: String, Codable, Equatable {
     case Invisible
-    case ClassRoom
+    case Classroom
     case Service
     case ThirdPartyService
     case Access
@@ -391,4 +391,22 @@ extension Route: PointOfInterest where T: Location {
         let to = self.nodes.last!
         return "Itinerário de \(from.title) até \(to.title)"
     }
+}
+
+public class Routes: PointOfInterest {
+    public var title: String = "debug"
+    
+    public var description: String = "debug"
+    
+    public var visibleInMap: Bool = true
+    
+    public var visibleInList: Bool = true
+    
+    public var displaysInfo: Bool = false
+    
+    public var hasMoreThanOneLevel: Bool = false
+    
+    public var levels: [Int] = []
+    
+    public var routes: [Route<Location>] = []
 }

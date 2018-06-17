@@ -87,3 +87,18 @@ public class Routing<T: Hashable>: NSObject {
         }
     }
 }
+
+extension Routing where T: Location {
+    public func debugRoute() -> Routes {
+        var dbg = [Route<Location>]()
+        
+        for (k,vs) in self.routes {
+            for v in vs {
+                dbg.append(Route(nodes: [k, v]))
+            }
+        }
+        let routes = Routes()
+        routes.routes = dbg
+        return routes
+    }
+}
