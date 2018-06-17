@@ -169,7 +169,7 @@ public class MapData {
         self.buildingsForList = self.buildings.filter { poi in poi.visibleInList }
         self.locationsForList = self.locations.filter { loc in loc.visibleInList }
         self.locationsForMap = self.locations.filter { loc in loc.visibleInMap }
-        self.locationsWithoutBuilding = self.locations.filter { loc in loc.building?.locationsForList.count == 1}
+        self.locationsWithoutBuilding = self.locations.filter { loc in loc.building?.locationsForList.count == 1 && loc.visibleInList }
     }
     
     public static func fromData(_ data: Data) throws -> MapData {
