@@ -121,6 +121,8 @@ func setupRoutes(locations: [Location], locationsByCode: [String: Location], rou
             let fromLocation = locationsByCode[fromId], let toLocation = locationsByCode[toId] {
             try? builder.route(from: fromLocation, to: toLocation)
             try? builder.route(from: toLocation, to: fromLocation)
+        } else {
+            print("ERRO: \(routeSpec)")
         }
     }
     

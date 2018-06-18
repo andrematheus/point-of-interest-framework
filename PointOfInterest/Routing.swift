@@ -89,14 +89,30 @@ public class Routing<T: Hashable>: NSObject {
 }
 
 extension Routing where T: Location {
-    public func debugRoute() -> Routes {
+    public func debugRoute(selection: PointOfInterest, selectedLevel: Int) -> Routes {
         var dbg = [Route<Location>]()
-        
+        let building: Building?
+        if let location = selection as? Location {
+            building = location.building
+        } else if let b = selection as? Building {
+            building = b
+        } else {
+            building = nil
+        }
         for (k,vs) in self.routes {
             for v in vs {
-                dbg.append(Route(nodes: [k, v]))
+                if let b = building {
+                    if (k.building == b && k.id.buildingLevel == selectedLevel) || (v.building == b && v.id.buildingLevel == selectedLevel) {
+                        dbg.append(Route(nodes: [k, v]))
+                    }
+                } else {
+                    if k.id.buildingLevel == selectedLevel || v.id.buildingLevel == selectedLevel {
+                        dbg.append(Route(nodes: [k, v]))
+                    }
+                }
             }
         }
+        
         let routes = Routes()
         routes.routes = dbg
         return routes
